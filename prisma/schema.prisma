@@ -1,0 +1,394 @@
+// Prisma schema for Hi-Conecta RH
+// Local: SQLite for zero-config development
+// Production: change provider to "postgresql" and DATABASE_URL
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  RH
+  GESTOR
+  VIEWER
+  COLABORADOR
+}
+
+enum EmployeeStatus {
+  ativo
+  afastado
+  desligado
+  ferias
+}
+
+enum VacationStatus {
+  concluida
+  programada
+  solicitar
+  pendente
+  recusada
+}
+
+model User {
+  id           String    @id @default(cuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(VIEWER)
+  active       Boolean   @default(true)
+  employeeId   String?
+  employee     Employee? @relation(fields: [employeeId], references: [id])
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([employeeId])
+}
+
+model Department {
+  id              String     @id
+  name            String     @unique
+  managerName     String?
+  directorName    String?
+  coordinatorName String?
+  supervisorName  String?
+  employees       Employee[]
+  vacations       Vacation[]
+  positions       Position[]
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+}
+
+model Position {
+  id           String      @id
+  name         String
+  departmentId String?
+  department   Department? @relation(fields: [departmentId], references: [id])
+  employees    Employee[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@index([name])
+}
+
+model Employee {
+  id                 String         @id
+  name               String
+  cpf                String?
+  birthDate          DateTime?
+  hireDate           DateTime?
+  contractType       String?
+  positionId         String?
+  position           Position?      @relation(fields: [positionId], references: [id])
+  departmentId       String?
+  department         Department?    @relation(fields: [departmentId], references: [id])
+  managerName        String?
+  directorName       String?
+  workScale          String?
+  workSchedule       String?
+  salary             Float?
+  mealAllowance      Float?
+  transportBenefit   String?
+  status             EmployeeStatus @default(ativo)
+  externalCode       String?
+  hasHealthInsurance Boolean        @default(false)
+  notes              String?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  vacations         Vacation[]
+  terminations      Termination[]
+  leaves            Leave[]
+  probationPeriods  ProbationPeriod[]
+  asoExams          AsoExam[]
+  healthInsurances  HealthInsurance[]
+  documents         EmployeeDocument[]
+  mealPartnerCredits MealPartnerCredit[]
+  laundryCredits     LaundryCredit[]
+  benefitCredits     BenefitCredit[]
+  transportCredits   TransportCredit[]
+  ifoodBonuses       IfoodBonus[]
+  users             User[]
+
+  @@index([name])
+  @@index([status])
+  @@index([departmentId])
+}
+
+model Vacation {
+  id                  String         @id
+  employeeId          String?
+  employee            Employee?      @relation(fields: [employeeId], references: [id])
+  employeeName        String
+  departmentId        String?
+  department          Department?    @relation(fields: [departmentId], references: [id])
+  departmentName      String?
+  acquisitionPeriod   String?
+  deadlineDate        DateTime?
+  startDate           DateTime?
+  endDate             DateTime?
+  days                Int?
+  status              VacationStatus @default(pendente)
+  value               Float?
+  paymentDate         DateTime?
+  dueDate             DateTime?
+  pecuniaryAllowance  Boolean        @default(false)
+  notes               String?
+  rhNotes             String?
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+
+  @@index([employeeId])
+  @@index([status])
+}
+
+model Termination {
+  id                    String    @id
+  employeeId            String?
+  employee              Employee? @relation(fields: [employeeId], references: [id])
+  employeeName          String
+  terminationType       String
+  terminationTypeLabel  String?
+  noticeType            String?
+  noticeStartDate       DateTime?
+  lastWorkDay           DateTime?
+  noticeEndDate         DateTime?
+  paymentDate           DateTime?
+  dueDate               DateTime?
+  value                 Float?
+  grrfValue             Float?
+  grrfDueDate           DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([employeeId])
+}
+
+model Leave {
+  id           String    @id
+  employeeId   String?
+  employee     Employee? @relation(fields: [employeeId], references: [id])
+  employeeName String
+  days         Int?
+  startDate    DateTime?
+  endDate      DateTime?
+  cid          String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([employeeId])
+}
+
+model ProbationPeriod {
+  id              String    @id
+  employeeId      String?
+  employee        Employee? @relation(fields: [employeeId], references: [id])
+  employeeName    String
+  hireDate        DateTime?
+  firstPeriodEnd  DateTime?
+  secondPeriodEnd DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([employeeId])
+}
+
+model AsoExam {
+  id                       String    @id
+  employeeId               String?
+  employee                 Employee? @relation(fields: [employeeId], references: [id])
+  employeeName             String
+  departmentName           String?
+  admissionExamDate        String?
+  admissionExamValidUntil  String?
+  periodic1Date            String?
+  periodic1ValidUntil      String?
+  periodic2Date            String?
+  periodic2ValidUntil      String?
+  periodic3Date            String?
+  periodic3ValidUntil      String?
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+
+  @@index([employeeId])
+}
+
+model HealthInsurance {
+  id         String    @id @default(cuid())
+  employeeId String?
+  employee   Employee? @relation(fields: [employeeId], references: [id])
+  name       String
+  cpf        String?
+  provider   String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([employeeId])
+}
+
+model EmployeeDocument {
+  id           String    @id @default(cuid())
+  employeeId   String
+  employee     Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  title        String
+  documentType String
+  fileName     String
+  filePath     String
+  mimeType     String?
+  fileSize     Int?
+  notes        String?
+  uploadedBy   String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@index([employeeId])
+  @@index([documentType])
+}
+
+/// Crédito em restaurante parceiro (ex.: Paraíba Grill) até liberar o vale alimentação.
+model MealPartnerCredit {
+  id               String    @id
+  employeeId       String?
+  employee         Employee? @relation(fields: [employeeId], references: [id])
+  employeeName     String
+  partnerName      String    @default("Paraíba Grill")
+  year             Int
+  monthLabel       String
+  monthNumber      Int
+  orderDates       String
+  quantity         Int
+  unitValue        Float
+  consumptionValue Float
+  notes            String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([employeeId])
+  @@index([partnerName])
+  @@index([year, monthNumber])
+}
+
+model MealPartnerDailySummary {
+  id               String   @id
+  partnerName      String   @default("Paraíba Grill")
+  date             DateTime
+  year             Int
+  quantity         Int
+  consumptionValue Float
+  deliveryFee      Float?
+  dayTotal         Float
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([partnerName, date])
+  @@index([year])
+}
+
+/// Crédito mensal de lavanderia (padrão R$ 120; proporcional se admitido no meio do mês).
+model LaundryCredit {
+  id             String    @id
+  employeeId     String?
+  employee       Employee? @relation(fields: [employeeId], references: [id])
+  employeeName   String
+  cpf            String?
+  year           Int
+  monthLabel     String
+  monthNumber    Int
+  amount         Float
+  fullAmount     Float     @default(120)
+  isProportional Boolean   @default(false)
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([employeeId])
+  @@index([cpf])
+  @@index([year, monthNumber])
+}
+
+/// Vale transporte mensal (planilha dedicada).
+model TransportCredit {
+  id             String    @id
+  employeeId     String?
+  employee       Employee? @relation(fields: [employeeId], references: [id])
+  employeeName   String
+  year           Int
+  monthLabel     String
+  monthNumber    Int
+  departmentName String?
+  status         String?
+  location       String?
+  cardNumber     String?
+  fare1          Float?
+  fare2          Float?
+  tripsPerDay    Float?
+  dailyValue     Float?
+  days           Float?
+  totalAmount    Float
+  isProportional Boolean   @default(false)
+  balance        Float?
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([employeeId])
+  @@index([year, monthNumber])
+}
+
+/// Bonificação IFOOD mensal (planilha modelo — campo Livre).
+model IfoodBonus {
+  id             String    @id
+  employeeId     String?
+  employee       Employee? @relation(fields: [employeeId], references: [id])
+  employeeName   String
+  cpf            String?
+  email          String?
+  phone          String?
+  costCenter     String?
+  year           Int
+  monthLabel     String
+  monthNumber    Int
+  amount         Float
+  mealPatAmount  Float?
+  ifoodEatAmount Float?
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([employeeId])
+  @@index([cpf])
+  @@index([year, monthNumber])
+}
+
+/// Controle mensal de benefícios CAJU (alimentação, mobilidade e VT).
+model BenefitCredit {
+  id               String    @id
+  employeeId       String?
+  employee         Employee? @relation(fields: [employeeId], references: [id])
+  employeeName     String
+  cpf              String?
+  year             Int
+  monthLabel       String
+  monthNumber      Int
+  departmentName   String?
+  workDays         Float?
+  workDaysNote     String?
+  mealAmount       Float?
+  mobilityAmount   Float?
+  mobilityNote     String?
+  transportAmount  Float?
+  isProportional   Boolean   @default(false)
+  startDate        DateTime?
+  orderDate        DateTime?
+  notes            String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([employeeId])
+  @@index([cpf])
+  @@index([year, monthNumber])
+}

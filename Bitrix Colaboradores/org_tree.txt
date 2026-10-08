@@ -1,0 +1,408 @@
+🏢 Holding Grupo Hi S.A [ID 1] (11 / 136 total)
+├── 💼 (sem cargo)
+│   ├── 👤 Barbara  Nicacio V4 <barbara.nicacio@v4company.com>
+│   ├── 👤 Connectthink - Agente externo de telefonia <contato@connectthink.com.br>
+│   ├── 👤 Daniel Red Control <daniel@redcontrol.com.br>
+│   ├── 👤 Teste 0711 <teste@grupohi.com.br>
+│   └── 👤 contato@universonext.com.br <contato@universonext.com.br>
+├── 💼 analista de bi
+│   └── 👤 João Honorato 0205 <joao.antonio@grupohi.com.br>
+├── 💼 automação
+│   └── 👤 Automação Bitrix24 <automacao.bitrix24@grupohi.com.br>
+├── 💼 founder e membro do conselho administrativo
+│   └── 👤 Hairon Silva 0102 <hairon@grupohi.com.br>
+├── 💼 presidente
+│   └── 👤 Isaelson Ramos 0101 <isaelson@grupohi.com.br>
+├── 💼 supervisor de relacionamento
+│   └── 👤 Crislayne Oliveira 1501 <crislayne.oliveira@grupohi.com.br>
+├── 💼 sócio hi franchising
+│   └── 👤 Jonathas Bezerra 1402 <jonathas.bezerra@grupohi.com.br>
+└── 🏢 CEO Grupo Hi [ID 463] (0 / 127 total) | chefe: Isaelson Ramos 0101
+    └── 🏢 COO Grupo Hi [ID 465] (3 / 127 total)
+        ├── 💼 coo operações e finanças
+        │   └── 👤 Sidney Lima 0201 <sidney.lima@grupohi.com.br>
+        ├── 💼 gerente de segurança da informação e infraestrutura
+        │   └── 👤 Rivaldo Santos 0707 <rivaldo.santos@grupohi.com.br>
+        ├── 💼 grupo hi
+        │   └── 👤 Gilsandro Macedo 0801 <gilsandro@grupohi.com.br>
+        ├── 🏢 Comercial [ID 153] (1 / 21 total) | chefe: Ramom Neves 5012
+        │   ├── 💼 chief revenue officer (cro)
+        │   │   └── 👤 Ramom Neves 5012 ★chefe <ramom.neves@grupohi.com.br>
+        │   └── 🏢 Comercial - Coordenação/Supervisão [ID 551] (2 / 21 total) | chefe: Ramom Neves 5012
+        │       ├── 💼 chief revenue officer (cro)
+        │       │   └── 👤 Ramom Neves 5012 ★chefe <ramom.neves@grupohi.com.br>
+        │       ├── 💼 supervisor de expansão
+        │       │   └── 👤 Pedro Vitor 5011 <pedro.vitor@grupohi.com.br>
+        │       └── 🏢 Consultoria Comercial [ID 113] (19 / 19 total) | chefe: Isanete Ramos 0312
+        │           ├── 💼 analista de estratégias comerciais
+        │           │   └── 👤 Thalles 0602 <thalles.albuquerque@grupohi.com.br>
+        │           ├── 💼 analista de expansão
+        │           │   └── 👤 Marcelo Soares 5016 <marcelo.santos@grupohi.com.br>
+        │           ├── 💼 analista de expansão - sdr
+        │           │   ├── 👤 Adricia nunes 5002 <adricia.medeiros@grupohi.com.br>
+        │           │   ├── 👤 Ana Lira 5014 <ana.lira@grupohi.com.br>
+        │           │   ├── 👤 Ivellyn 5003 <ivellyn@grupohi.com.br>
+        │           │   ├── 👤 Juliana Silva 5007 <juliana.silva@grupohi.com.br>
+        │           │   └── 👤 Mateus Albuquerque 5013 <mateus.albuquerque@grupohi.com.br>
+        │           ├── 💼 analista de expansão/ sdr
+        │           │   └── 👤 Vanessa Aguiar 5001 <vanessa.aguiar@grupohi.com.br>
+        │           ├── 💼 closer
+        │           │   └── 👤 João Neto 5006 <joao.neto@grupohi.com.br>
+        │           ├── 💼 consultor (a) comercial
+        │           │   └── 👤 Bruna Brandão 5008 <bruna.brandao@grupohi.com.br>
+        │           ├── 💼 consultor (a) comercial- expansão
+        │           │   └── 👤 Rafaella Lima 5018 <rafaella.lima@grupohi.com.br>
+        │           ├── 💼 consultor comercial
+        │           │   ├── 👤 Gustavo Albuquerque 5005 <gustavo.albuquerque@grupohi.com.br>
+        │           │   ├── 👤 Hudson Ferreira 5004 <hudson.ferreira@grupohi.com.br>
+        │           │   ├── 👤 Jhonattan Cardoso 5010 <Jhonattan.Cardoso@grupohi.com.br>
+        │           │   ├── 👤 Paulo Nascimento 5009 <paulo.nascimento@grupohi.com.br>
+        │           │   ├── 👤 Rômulo Ribeiro 5015 <romulo.ribeiro@grupohi.com.br>
+        │           │   └── 👤 Valdo Neves 5017 <valdo.neto@grupohi.com.br>
+        │           ├── 💼 especialista em vendas online
+        │           │   └── 👤 Erllon Dutra 0311 <erllon.dutra@grupohi.com.br>
+        │           └── 💼 supervisora de expansão
+        │               └── 👤 Isanete Ramos 0312 ★chefe <isanete@grupohi.com.br>
+        ├── 🏢 Marketing e Estratégia [ID 467] (1 / 9 total)
+        │   ├── 💼 gerente de marketing
+        │   │   └── 👤 Henrique Barbosa 0405 <henrique.barbosa@grupohi.com.br>
+        │   └── 🏢 Marketing e Estratégia - Coordenação/Supervisão [ID 553] (0 / 8 total)
+        │       ├── 🏢 Branding e Performance [ID 471] (0 / 0 total)
+        │       ├── 🏢 Criação e Arte [ID 469] (7 / 7 total) | chefe: Sofia Morais 0412
+        │       │   ├── 💼 designer gráfico
+        │       │   │   ├── 👤 Danilo Tavares 0402 <danilo.tavares@grupohi.com.br>
+        │       │   │   ├── 👤 Francisco Fernandes 0410 <francisco.fernandes@grupohi.com.br>
+        │       │   │   └── 👤 Raira Sena 0411 <Raira.Sena@grupohi.com.br>
+        │       │   ├── 💼 social media
+        │       │   │   └── 👤 Matheus Alencar Vieira de Alencar 0404 <matheus.alencar@grupohi.com.br>
+        │       │   ├── 💼 supervisora de arte
+        │       │   │   └── 👤 Sofia Morais 0412 ★chefe <sofia.morais@grupohi.com.br>
+        │       │   └── 💼 videomaker
+        │       │       ├── 👤 Carlos Miguel 0406 <carlos.miguel@grupohi.com.br>
+        │       │       └── 👤 Giovanna Ravine 0413 <giovanna.ravine@grupohi.com.br>
+        │       └── 🏢 Community Management [ID 783] (1 / 1 total)
+        │           └── 💼 analista de social media
+        │               └── 👤 Vitoria Brandão 0408 <vitoria.brandao@grupohi.com.br>
+        ├── 🏢 Novos Negócios [ID 475] (1 / 3 total) | chefe: Demis Douglas 0601
+        │   ├── 💼 gerente de novos negócios
+        │   │   └── 👤 Demis Douglas 0601 ★chefe <demis.gouglas@grupohi.com.br>
+        │   └── 🏢 Novos Negócios - Coordenação/Supervisão [ID 557] (1 / 3 total) | chefe: Demis Douglas 0601
+        │       ├── 💼 gerente de novos negócios
+        │       │   └── 👤 Demis Douglas 0601 ★chefe <demis.gouglas@grupohi.com.br>
+        │       └── 🏢 Novos Negócios - Analistas [ID 585] (2 / 2 total)
+        │           ├── 💼 analista de estratégias comerciais
+        │           │   └── 👤 Thalles 0602 <thalles.albuquerque@grupohi.com.br>
+        │           └── 💼 analista de novos negócios
+        │               └── 👤 Lyandra Tavares 0603 <lyandra.tavares@grupohi.com.br>
+        ├── 🏢 Hi Hub - Inovações e Tecnologias [ID 477] (2 / 16 total)
+        │   ├── 💼 gerente de desenvolvimento
+        │   │   └── 👤 João Gabriel 0704 <joaogabriel@grupohi.com.br>
+        │   ├── 💼 grupo hi
+        │   │   └── 👤 Aylton Junior 0702 <aylton@grupohi.com.br>
+        │   └── 🏢 Hi Hub - Coordenação [ID 559] (1 / 16 total)
+        │       ├── 💼 gerente de desenvolvimento
+        │       │   └── 👤 João Gabriel 0704 <joaogabriel@grupohi.com.br>
+        │       ├── 🏢 Infra, I.A. e I.O.T [ID 481] (6 / 6 total)
+        │       │   ├── 💼 (sem cargo)
+        │       │   │   └── 👤 Infra Ikli <infra@grupohi.com.br>
+        │       │   ├── 💼 analista de nrs - back-office
+        │       │   │   └── 👤 Leonardo Lopes 1218 <leonardo.lopes@grupohi.com.br>
+        │       │   ├── 💼 analista de segurança da informação
+        │       │   │   └── 👤 Gabriel Ribeiro 0706 <gabriel.ribeiro@grupohi.com.br>
+        │       │   ├── 💼 gerente de segurança da informação e infraestrutura
+        │       │   │   └── 👤 Rivaldo Santos 0707 <rivaldo.santos@grupohi.com.br>
+        │       │   ├── 💼 grupo hi
+        │       │   │   └── 👤 Aylton Junior 0702 <aylton@grupohi.com.br>
+        │       │   └── 💼 supervisor de pesquisa e desenvolvimento
+        │       │       └── 👤 Eric Melo 0711 <eric.melo@grupohi.com.br>
+        │       ├── 🏢 Desenvolvimento de Sistemas [ID 479] (11 / 11 total)
+        │       │   ├── 💼 (sem cargo)
+        │       │   │   └── 👤 Desenvolvimento HI <dev@grupohi.com.br>
+        │       │   ├── 💼 analista de bi
+        │       │   │   └── 👤 João Honorato 0205 <joao.antonio@grupohi.com.br>
+        │       │   ├── 💼 desenvolvedor fullstack
+        │       │   │   └── 👤 Ericles Luan 0703 <luan.silva@grupohi.com.br>
+        │       │   ├── 💼 desenvolvedor junior
+        │       │   │   └── 👤 Ricardo Soares 0708 <ricardo.soares@grupohi.com.br>
+        │       │   ├── 💼 desenvolvedora junior
+        │       │   │   └── 👤 Isadora Garcez 0709 <isadora.garcez@grupohi.com.br>
+        │       │   ├── 💼 desenvolvedora pleno
+        │       │   │   └── 👤 Lohuama Felizardo 0710 <loruama.felizardo@grupohi.com.br>
+        │       │   ├── 💼 estag. de desenvolvimento
+        │       │   │   └── 👤 Helena Trombetta 0712 <helena.tomaz@grupohi.com.br>
+        │       │   ├── 💼 gerente de desenvolvimento
+        │       │   │   └── 👤 João Gabriel 0704 <joaogabriel@grupohi.com.br>
+        │       │   ├── 💼 gerente de infra e sistemas
+        │       │   │   └── 👤 Arthur Macena 0701 <arthur.macena@grupohi.com.br>
+        │       │   ├── 💼 gerente de segurança da informação e infraestrutura
+        │       │   │   └── 👤 Rivaldo Santos 0707 <rivaldo.santos@grupohi.com.br>
+        │       │   └── 💼 supervisor de desenvolvimento & inovações
+        │       │       └── 👤 Daniel Araújo 0705 <daniel.araujo@grupohi.com.br>
+        │       └── 🏢 Integrações [ID 785] (1 / 1 total)
+        │           └── 💼 desenvolvedor fullstack
+        │               └── 👤 Ericles Luan 0703 <luan.silva@grupohi.com.br>
+        ├── 🏢 Financeiro [ID 485] (1 / 7 total)
+        │   ├── 💼 cfo
+        │   │   └── 👤 Caio Dantas 0203 <caio.d@grupohi.com.br>
+        │   └── 🏢 Financeiro - Coordenação/Supervisão [ID 561] (3 / 7 total)
+        │       ├── 💼 cfo
+        │       │   └── 👤 Caio Dantas 0203 <caio.d@grupohi.com.br>
+        │       ├── 💼 gerente de controladoria e contabilidade
+        │       │   └── 👤 Fillyphe Lucena 0809 <fillyphe.justino@grupohi.com.br>
+        │       ├── 💼 grupo hi
+        │       │   └── 👤 Gilsandro Macedo 0801 <gilsandro@grupohi.com.br>
+        │       └── 🏢 Financeiro - Analistas e Assistentes [ID 637] (5 / 5 total)
+        │           ├── 💼 (sem cargo)
+        │           │   └── 👤 Samara Coutinho 0808 <samara.coutinho@grupohi.com.br>
+        │           ├── 💼 analista contábil ii
+        │           │   └── 👤 Manuelly Costa 0805 <manuelly.costa@grupohi.com.br>
+        │           ├── 💼 analista financeiro
+        │           │   ├── 👤 Helena Bispo 0802 <helena.bispo@grupohi.com.br>
+        │           │   └── 👤 Patricia Henrique 0804 <patricia@grupohi.com.br>
+        │           └── 💼 cfo
+        │               └── 👤 Caio Dantas 0203 <caio.d@grupohi.com.br>
+        ├── 🏢 Gente e Cultura [ID 489] (2 / 4 total) | chefe: Bruna Carlucci 0902
+        │   ├── 💼 analista de recrutamento e seleção
+        │   │   └── 👤 Jeniffer Alves 0904 <jeniffer.alves@grupohi.com.br>
+        │   ├── 💼 gerente de gente e cultura
+        │   │   └── 👤 Bruna Carlucci 0902 ★chefe <bruna.carlucci@grupohi.com.br>
+        │   └── 🏢 Gente e Cultura - Coordenação/Supervisão [ID 565] (1 / 4 total) | chefe: Bruna Carlucci 0902
+        │       ├── 💼 gerente de gente e cultura
+        │       │   └── 👤 Bruna Carlucci 0902 ★chefe <bruna.carlucci@grupohi.com.br>
+        │       ├── 🏢 Atração e Retenção de Talentos [ID 491] (4 / 4 total) | chefe: Bruna Carlucci 0902
+        │       │   ├── 💼 analista de recrutamento e seleção
+        │       │   │   └── 👤 Jeniffer Alves 0904 <jeniffer.alves@grupohi.com.br>
+        │       │   ├── 💼 analista de recursos humanos
+        │       │   │   └── 👤 Camila Santos 0905 <camila.santos@grupohi.com.br>
+        │       │   ├── 💼 auxiliar administrativo
+        │       │   │   └── 👤 ISLLY RAMOS DE OLIVEIRA SILVA 0906 <islly@grupohi.com.br>
+        │       │   └── 💼 gerente de gente e cultura
+        │       │       └── 👤 Bruna Carlucci 0902 ★chefe <bruna.carlucci@grupohi.com.br>
+        │       └── 🏢 Cultura e Desenvolvimento [ID 493] (2 / 2 total) | chefe: Bruna Carlucci 0902
+        │           ├── 💼 analista de recrutamento e seleção
+        │           │   └── 👤 Jeniffer Alves 0904 <jeniffer.alves@grupohi.com.br>
+        │           └── 💼 gerente de gente e cultura
+        │               └── 👤 Bruna Carlucci 0902 ★chefe <bruna.carlucci@grupohi.com.br>
+        ├── 🏢 Técnica [ID 495] (1 / 10 total) | chefe: Matheus Alexsandro 1012
+        │   ├── 💼 coordenador técnico
+        │   │   └── 👤 Matheus Alexsandro 1012 ★chefe <matheus.alexsandro@grupohi.com.br>
+        │   └── 🏢 Técnica - Coordenação [ID 811] (1 / 10 total) | chefe: Matheus Alexsandro 1012
+        │       ├── 💼 coordenador técnico
+        │       │   └── 👤 Matheus Alexsandro 1012 ★chefe <matheus.alexsandro@grupohi.com.br>
+        │       └── 🏢 Técnica - Analistas [ID 567] (10 / 10 total) | chefe: Matheus Alexsandro 1012
+        │           ├── 💼 analista de suporte
+        │           │   └── 👤 Jaelson Pereira 1245 <jaelson.pereira@grupohi.com.br>
+        │           ├── 💼 analista técnico
+        │           │   ├── 👤 João Victor 1011 <joao.victor@grupohi.com.br>
+        │           │   └── 👤 Sidney Ciraulo 1010 <sidney.rogerio@grupohi.com.br>
+        │           ├── 💼 auxiliar técnico
+        │           │   ├── 👤 Pedro Silva 1003 <pedro.silva@grupohi.com.br>
+        │           │   └── 👤 Pietrus Soares 1013 <pietrus.soares@grupohi.com.br>
+        │           ├── 💼 auxiliar técnico e operacional
+        │           │   ├── 👤 Davi Xavier 1004 <davi.xavier@grupohi.com.br>
+        │           │   ├── 👤 Douglas Xavier 1005 <Douglas.Xavier@grupohi.com.br>
+        │           │   └── 👤 Pedro Gabriel 1006 <pedro.gabriel@grupohi.com.br>
+        │           ├── 💼 auxiliar técnico operacional
+        │           │   └── 👤 José Xavier Da Rocha Filho 1009 <jose.xavier@grupohi.com.br>
+        │           └── 💼 coordenador técnico
+        │               └── 👤 Matheus Alexsandro 1012 ★chefe <matheus.alexsandro@grupohi.com.br>
+        ├── 🏢 Operações [ID 497] (1 / 7 total) | chefe: Marcelo Sousa 1105
+        │   ├── 💼 gerente de operações
+        │   │   └── 👤 Marcelo Sousa 1105 ★chefe <marcelo@grupohi.com.br>
+        │   └── 🏢 Operações - Coordenação [ID 813] (2 / 7 total) | chefe: Marcelo Sousa 1105
+        │       ├── 💼 gerente de operações
+        │       │   └── 👤 Marcelo Sousa 1105 ★chefe <marcelo@grupohi.com.br>
+        │       ├── 💼 supervisor de operações
+        │       │   └── 👤 Arthur Rick 1002 <arthur.rick@grupohi.com.br>
+        │       ├── 🏢 Compras e Estoque [ID 499] (2 / 2 total) | chefe: Marcelo Sousa 1105
+        │       │   ├── 💼 analista administrativa
+        │       │   │   └── 👤 Bianca Gouveia 1107 <bianca.gouveia@grupohi.com.br>
+        │       │   └── 💼 gerente de operações
+        │       │       └── 👤 Marcelo Sousa 1105 ★chefe <marcelo@grupohi.com.br>
+        │       ├── 🏢 Operações e HiPlim [ID 501] (3 / 3 total) | chefe: Marcelo Sousa 1105
+        │       │   ├── 💼 analista administrativa
+        │       │   │   └── 👤 Bianca Gouveia 1107 <bianca.gouveia@grupohi.com.br>
+        │       │   ├── 💼 coordenadora de operações – hi plim
+        │       │   │   └── 👤 Rayane Kely 1104 <rayane@grupohi.com.br>
+        │       │   └── 💼 gerente de operações
+        │       │       └── 👤 Marcelo Sousa 1105 ★chefe <marcelo@grupohi.com.br>
+        │       └── 🏢 Logística [ID 503] (5 / 5 total) | chefe: Marcelo Sousa 1105
+        │           ├── 💼 analista administrativa
+        │           │   └── 👤 Bianca Gouveia 1107 <bianca.gouveia@grupohi.com.br>
+        │           ├── 💼 auxiliar administrativo.
+        │           │   └── 👤 Guilherme Lira 1103 <guilherme.lira@grupohi.com.br>
+        │           ├── 💼 auxiliar de operações e logística
+        │           │   └── 👤 Oseas Felinto 1106 <oseas.ricardo@grupohi.com.br>
+        │           ├── 💼 gerente de operações
+        │           │   └── 👤 Marcelo Sousa 1105 ★chefe <marcelo@grupohi.com.br>
+        │           └── 💼 operador de lavanderias e entregas
+        │               └── 👤 Everton Silva Everton <everton.silva@grupohi.com.br>
+        ├── 🏢 Customer Success [ID 505] (0 / 4 total) | chefe: Karla Flor 1508
+        │   └── 🏢 Customer Succcess - Coordenação/Supervisão [ID 571] (1 / 4 total) | chefe: Karla Flor 1508
+        │       ├── 💼 cxo - chief xperience officer
+        │       │   └── 👤 Karla Flor 1508 ★chefe <karla.flor@grupohi.com.br>
+        │       ├── 🏢 Estratégias e Engajamento [ID 511] (0 / 0 total)
+        │       ├── 🏢 Retenção e Fidelização [ID 509] (0 / 0 total)
+        │       └── 🏢 Customer Experience [ID 507] (4 / 4 total) | chefe: Karla Flor 1508
+        │           ├── 💼 analista de auditoria operacional - cs
+        │           │   └── 👤 Monica Vitorino 1506 <monica.vitorino@grupohi.com.br>
+        │           ├── 💼 analista de cs
+        │           │   ├── 👤 Iarley Oliveira 1509 <Iarley.Oliveira@grupohi.com.br>
+        │           │   └── 👤 Yarlisson Vieira 1502 <yarlisson.vieira@grupohi.com.br>
+        │           └── 💼 cxo - chief xperience officer
+        │               └── 👤 Karla Flor 1508 ★chefe <karla.flor@grupohi.com.br>
+        ├── 🏢 Relacionamento e Suporte [ID 513] (1 / 32 total) | chefe: Karla Flor 1508
+        │   ├── 💼 cxo - chief xperience officer
+        │   │   └── 👤 Karla Flor 1508 ★chefe <karla.flor@grupohi.com.br>
+        │   └── 🏢 Relacionamento e Suporte - Coordenação/Supervisão [ID 573] (6 / 32 total) | chefe: Crislayne Oliveira 1501
+        │       ├── 💼 cxo - chief xperience officer
+        │       │   └── 👤 Karla Flor 1508 <karla.flor@grupohi.com.br>
+        │       ├── 💼 gerente de relacionamento
+        │       │   └── 👤 Guilherme Sulz 1229 <guilherme.sulz@grupohi.com.br>
+        │       ├── 💼 supervisor de relacionamento
+        │       │   └── 👤 Crislayne Oliveira 1501 ★chefe <crislayne.oliveira@grupohi.com.br>
+        │       ├── 💼 supervisor de relacionamento e suporte - nrs
+        │       │   └── 👤 Leanderson 1217 <leanderson.mascena@grupohi.com.br>
+        │       ├── 💼 supervisor de ti - nrs
+        │       │   └── 👤 João Victor 1211 <joao.alexandre@grupohi.com.br>
+        │       ├── 💼 supervisor ii de relacionamento e suporte - nrs
+        │       │   └── 👤 Rodolfo 1216 <rodolfo@grupohi.com.br>
+        │       ├── 🏢 Relacionamento e Performance - Mentoria [ID 517] (12 / 12 total) | chefe: Guilherme Sulz 1229
+        │       │   ├── 💼 analista de franquias ( concierge )
+        │       │   │   └── 👤 Jeniffer Silva 1503 <jeniffer.silva@grupohi.com.br>
+        │       │   ├── 💼 concierge do franqueado
+        │       │   │   ├── 👤 Hiago Vinicius 1507 <hiago.vinicius@grupohi.com.br>
+        │       │   │   ├── 👤 Mateus Brito 1311 <mateus.brito@grupohi.com.br>
+        │       │   │   ├── 👤 Micael Moura 1505 <micael.moura@grupohi.com.br>
+        │       │   │   └── 👤 Ruan Lucas França 1014 <Ruan.Lucas@grupohi.com.br>
+        │       │   ├── 💼 gerente de relacionamento
+        │       │   │   └── 👤 Guilherme Sulz 1229 ★chefe <guilherme.sulz@grupohi.com.br>
+        │       │   ├── 💼 mentor de negócios
+        │       │   │   ├── 👤 Anderson Vasques 1206 <anderson.vasques@grupohi.com.br>
+        │       │   │   ├── 👤 Jonathas Rodrigues 1227 <jonathas.rodrigues@grupohi.com.br>
+        │       │   │   ├── 👤 Katia Nunes 1248 <katia.nunes@grupohi.com.br>
+        │       │   │   └── 👤 Reinaldo Luiz 1231 <reinaldo.luiz@grupohi.com.br>
+        │       │   ├── 💼 mentora de negócios
+        │       │   │   ├── 👤 Giovanna Oliveira 1230 <giovanna.oliveira@grupohi.com.br>
+        │       │   │   └── 👤 Larissa Alves 1232 <larissa.alves@grupohi.com.br>
+        │       │   └── 🏢 Relacionamento e Performance - Analistas [ID 819] (0 / 0 total)
+        │       ├── 🏢 Relacionamento e Suporte N1 [ID 515] (19 / 19 total) | chefe: Karla Flor 1508
+        │       │   ├── 💼 analista de nrs
+        │       │   │   └── 👤 Joviniano 1212 <joviniano.queiroz@grupohi.com.br>
+        │       │   ├── 💼 analista de ti
+        │       │   │   ├── 👤 Alesandro Silva 1239 <alesandro.silva@grupohi.com.br>
+        │       │   │   ├── 👤 Caio 1221 <caio.nogueira@grupohi.com.br>
+        │       │   │   ├── 👤 Givanildo 1209 <givanildo.silva@grupohi.com.br>
+        │       │   │   ├── 👤 Johnnathan 1205 <johnnathan.elvis@grupohi.com.br>
+        │       │   │   ├── 👤 José 1219 <jose.lopes@grupohi.com.br>
+        │       │   │   ├── 👤 Mahori 1220 <mahori@grupohi.com.br>
+        │       │   │   ├── 👤 Nicolas 1250 <nicolas.michell@grupohi.com.br>
+        │       │   │   ├── 👤 Rafael M. 1223 <Rafael.Macedo@grupohi.com.br>
+        │       │   │   ├── 👤 Rafael S. 1224 <rafael.sousa@grupohi.com.br>
+        │       │   │   ├── 👤 Sergio 1247 <sergio.meireles@grupohi.com.br>
+        │       │   │   ├── 👤 Thiago 1233 <thiago.lins@grupohi.com.br>
+        │       │   │   ├── 👤 Victor 1214 <victor.silva@grupohi.com.br>
+        │       │   │   └── 👤 Vinicius 1210 <vinicius.santos@grupohi.com.br>
+        │       │   ├── 💼 cxo - chief xperience officer
+        │       │   │   └── 👤 Karla Flor 1508 ★chefe <karla.flor@grupohi.com.br>
+        │       │   ├── 💼 supervisor de relacionamento e suporte - nrs
+        │       │   │   └── 👤 Leanderson 1217 <leanderson.mascena@grupohi.com.br>
+        │       │   ├── 💼 supervisor de ti - nrs
+        │       │   │   ├── 👤 Anderson 1213 <anderson.moreira@grupohi.com.br>
+        │       │   │   └── 👤 João Victor 1211 <joao.alexandre@grupohi.com.br>
+        │       │   └── 💼 supervisor ii de relacionamento e suporte - nrs
+        │       │       └── 👤 Rodolfo 1216 <rodolfo@grupohi.com.br>
+        │       └── 🏢 Relacionamento e Suporte N2 [ID 817] (17 / 17 total)
+        │           ├── 💼 analista de ti
+        │           │   ├── 👤 Alesandro Silva 1239 <alesandro.silva@grupohi.com.br>
+        │           │   ├── 👤 Caio 1221 <caio.nogueira@grupohi.com.br>
+        │           │   ├── 👤 Givanildo 1209 <givanildo.silva@grupohi.com.br>
+        │           │   ├── 👤 Johnnathan 1205 <johnnathan.elvis@grupohi.com.br>
+        │           │   ├── 👤 José 1219 <jose.lopes@grupohi.com.br>
+        │           │   ├── 👤 Mahori 1220 <mahori@grupohi.com.br>
+        │           │   ├── 👤 Nicolas 1250 <nicolas.michell@grupohi.com.br>
+        │           │   ├── 👤 Rafael M. 1223 <Rafael.Macedo@grupohi.com.br>
+        │           │   ├── 👤 Rafael S. 1224 <rafael.sousa@grupohi.com.br>
+        │           │   ├── 👤 Sergio 1247 <sergio.meireles@grupohi.com.br>
+        │           │   ├── 👤 Thiago 1233 <thiago.lins@grupohi.com.br>
+        │           │   └── 👤 Vinicius 1210 <vinicius.santos@grupohi.com.br>
+        │           ├── 💼 cxo - chief xperience officer
+        │           │   └── 👤 Karla Flor 1508 <karla.flor@grupohi.com.br>
+        │           ├── 💼 supervisor de relacionamento e suporte - nrs
+        │           │   └── 👤 Leanderson 1217 <leanderson.mascena@grupohi.com.br>
+        │           ├── 💼 supervisor de ti - nrs
+        │           │   ├── 👤 Anderson 1213 <anderson.moreira@grupohi.com.br>
+        │           │   └── 👤 João Victor 1211 <joao.alexandre@grupohi.com.br>
+        │           └── 💼 supervisor ii de relacionamento e suporte - nrs
+        │               └── 👤 Rodolfo 1216 <rodolfo@grupohi.com.br>
+        ├── 🏢 Onboarding [ID 519] (2 / 8 total) | chefe: Rennan Melo 1302
+        │   ├── 💼 coordenador de onboarding
+        │   │   ├── 👤 Danilo Oliveira 1301 <danilo.oliveira@grupohi.com.br>
+        │   │   └── 👤 Rennan Melo 1302 ★chefe <rennan@grupohi.com.br>
+        │   └── 🏢 Onboarding - Coordenação [ID 575] (2 / 8 total) | chefe: Danilo Oliveira 1301
+        │       ├── 💼 coordenador de onboarding
+        │       │   ├── 👤 Danilo Oliveira 1301 ★chefe <danilo.oliveira@grupohi.com.br>
+        │       │   └── 👤 Rennan Melo 1302 <rennan@grupohi.com.br>
+        │       ├── 🏢 Onboarding 1 [ID 521] (6 / 6 total) | chefe: Rennan Melo 1302
+        │       │   ├── 💼 analista de onboarding
+        │       │   │   └── 👤 Beatriz Gonçalves 1304 <beatriz.goncalves@grupohi.com.br>
+        │       │   ├── 💼 analista de relacionamento com franqueado
+        │       │   │   └── 👤 Andre Victor 1203 <andre.victor@grupohi.com.br>
+        │       │   ├── 💼 arquiteta
+        │       │   │   └── 👤 Lívia Almeida 1308 <livia.almeida@grupohi.com.br>
+        │       │   ├── 💼 consultor onboarding
+        │       │   │   └── 👤 Carla Braz 1303 <carla.braz@grupohi.com.br>
+        │       │   ├── 💼 coordenador de onboarding
+        │       │   │   └── 👤 Rennan Melo 1302 ★chefe <rennan@grupohi.com.br>
+        │       │   └── 💼 estagiária de designer interiores/arquitetura
+        │       │       └── 👤 Anna Nascimento 1305 <anna.nascimento@grupohi.com.br>
+        │       ├── 🏢 Onboarding 2 [ID 523] (2 / 2 total) | chefe: Rennan Melo 1302
+        │       │   ├── 💼 arquiteta
+        │       │   │   └── 👤 Lívia Almeida 1308 <livia.almeida@grupohi.com.br>
+        │       │   └── 💼 coordenador de onboarding
+        │       │       └── 👤 Rennan Melo 1302 ★chefe <rennan@grupohi.com.br>
+        │       └── 🏢 Inaugurações [ID 525] (2 / 2 total)
+        │           ├── 💼 coordenador de onboarding
+        │           │   └── 👤 Rennan Melo 1302 <rennan@grupohi.com.br>
+        │           └── 💼 técnico de implantação
+        │               └── 👤 Roberto Silva 1310 <roberto.silva@grupohi.com.br>
+        ├── 🏢 Jurídico [ID 527] (1 / 6 total)
+        │   ├── 💼 gerente jurídico
+        │   │   └── 👤 Debora Costa 1403 <debora.costa@grupohi.com.br>
+        │   └── 🏢 Jurídico - Coordenação [ID 815] (1 / 6 total)
+        │       ├── 💼 gerente jurídico
+        │       │   └── 👤 Debora Costa 1403 <debora.costa@grupohi.com.br>
+        │       └── 🏢 Jurídico - Analistas [ID 577] (6 / 6 total) | chefe: Debora Costa 1403
+        │           ├── 💼 advogado
+        │           │   ├── 👤 Leonardo Nascimento 1406 <leonardo.nascimento@grupohi.com.br>
+        │           │   └── 👤 Nataly Queiroz 1404 <nataly.queiroz@grupohi.com.br>
+        │           ├── 💼 analista juridico
+        │           │   ├── 👤 Gilberto Andrade 1407 <gilberto.andrade@grupohi.com.br>
+        │           │   └── 👤 Lucas Batista 1405 <lucas.batista@grupohi.com.br>
+        │           ├── 💼 analista jurídico
+        │           │   └── 👤 Lavinia Leticia 1408 <lavinia.leticia@grupohi.com.br>
+        │           └── 💼 gerente jurídico
+        │               └── 👤 Debora Costa 1403 ★chefe <debora.costa@grupohi.com.br>
+        └── 🏢 Gestores [ID 829] (11 / 11 total) | chefe: Jairo Albuquerque 0202
+            ├── 💼 chief revenue officer (cro)
+            │   └── 👤 Ramom Neves 5012 <ramom.neves@grupohi.com.br>
+            ├── 💼 coordenador de onboarding
+            │   └── 👤 Danilo Oliveira 1301 <danilo.oliveira@grupohi.com.br>
+            ├── 💼 cxo - chief xperience officer
+            │   └── 👤 Karla Flor 1508 <karla.flor@grupohi.com.br>
+            ├── 💼 gerente de controladoria e contabilidade
+            │   └── 👤 Fillyphe Lucena 0809 <fillyphe.justino@grupohi.com.br>
+            ├── 💼 gerente de desenvolvimento
+            │   └── 👤 João Gabriel 0704 <joaogabriel@grupohi.com.br>
+            ├── 💼 gerente de gente e cultura
+            │   └── 👤 Bruna Carlucci 0902 <bruna.carlucci@grupohi.com.br>
+            ├── 💼 gerente de inovações e integrações
+            │   └── 👤 Jairo Albuquerque 0202 ★chefe <jairo@grupohi.com.br>
+            ├── 💼 gerente de marketing
+            │   └── 👤 Henrique Barbosa 0405 <henrique.barbosa@grupohi.com.br>
+            ├── 💼 gerente de relacionamento
+            │   └── 👤 Guilherme Sulz 1229 <guilherme.sulz@grupohi.com.br>
+            ├── 💼 gerente de segurança da informação e infraestrutura
+            │   └── 👤 Rivaldo Santos 0707 <rivaldo.santos@grupohi.com.br>
+            └── 💼 supervisor de relacionamento
+                └── 👤 Crislayne Oliveira 1501 <crislayne.oliveira@grupohi.com.br>
