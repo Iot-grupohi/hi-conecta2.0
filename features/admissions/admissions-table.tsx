@@ -101,7 +101,7 @@ export function AdmissionsTable({
         </p>
       </div>
 
-      <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mb-4 grid grid-cols-2 gap-3 xl:grid-cols-4">
         <CostStat label="Admissões" value={String(costs.count)} hint="Na lista filtrada" />
         <CostStat
           label="Total salários"
@@ -142,10 +142,14 @@ export function AdmissionsTable({
           { value: "hireDate:asc", label: "Admissão (antiga)" },
           { value: "name:asc", label: "Nome (A-Z)" },
           { value: "name:desc", label: "Nome (Z-A)" },
-          { value: "total:desc", label: "Custo total (maior)" },
-          { value: "total:asc", label: "Custo total (menor)" },
-          { value: "salary:desc", label: "Salário (maior)" },
-          { value: "salary:asc", label: "Salário (menor)" },
+          ...(canViewSalary
+            ? [
+                { value: "total:desc", label: "Custo total (maior)" },
+                { value: "total:asc", label: "Custo total (menor)" },
+                { value: "salary:desc", label: "Salário (maior)" },
+                { value: "salary:asc", label: "Salário (menor)" },
+              ]
+            : []),
         ]}
         sortValue={sortValue}
         onSortChange={setSortValue}
@@ -204,7 +208,7 @@ export function AdmissionsTable({
                       {meal ? money(meal.amount) : "—"}
                     </TableCell>
                     <TableCell className="text-right">
-                      <div className="tabular-nums font-extrabold text-[var(--color-heading)]">
+                      <div className="tabular-nums font-semibold text-[var(--color-heading)]">
                         {money(total)}
                       </div>
                       {canViewSalary ? (
@@ -220,17 +224,17 @@ export function AdmissionsTable({
               <TableRow className="bg-[var(--color-muted)]/40">
                 <TableCell
                   colSpan={5}
-                  className="text-sm font-extrabold text-[var(--color-heading)]"
+                  className="text-sm font-semibold text-[var(--color-heading)]"
                 >
                   Totais ({costs.count} {costs.count === 1 ? "admissão" : "admissões"})
                 </TableCell>
-                <TableCell className="text-right text-sm font-extrabold tabular-nums">
+                <TableCell className="text-right text-sm font-semibold tabular-nums">
                   {money(costs.salary)}
                 </TableCell>
-                <TableCell className="text-right text-sm font-extrabold tabular-nums">
+                <TableCell className="text-right text-sm font-semibold tabular-nums">
                   {money(costs.meal)}
                 </TableCell>
-                <TableCell className="text-right text-sm font-extrabold tabular-nums text-[var(--color-navy)]">
+                <TableCell className="text-right text-sm font-semibold tabular-nums text-[var(--color-heading)]">
                   {money(costs.total)}
                 </TableCell>
               </TableRow>

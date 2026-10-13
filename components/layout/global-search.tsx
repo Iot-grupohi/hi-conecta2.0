@@ -20,6 +20,7 @@ export function GlobalSearch() {
   const router = useRouter();
   const listId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [open, setOpen] = useState(false);
@@ -32,8 +33,19 @@ export function GlobalSearch() {
         setOpen(false);
       }
     }
+    function onShortcut(event: KeyboardEvent) {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        inputRef.current?.focus();
+        inputRef.current?.select();
+      }
+    }
     document.addEventListener("mousedown", onClickOutside);
-    return () => document.removeEventListener("mousedown", onClickOutside);
+    document.addEventListener("keydown", onShortcut);
+    return () => {
+      document.removeEventListener("mousedown", onClickOutside);
+      document.removeEventListener("keydown", onShortcut);
+    };
   }, []);
 
   useEffect(() => {
@@ -113,8 +125,9 @@ export function GlobalSearch() {
     <div ref={rootRef} className="relative max-w-xl flex-1">
       <Search className="pointer-events-none absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-[var(--color-muted-foreground)]" />
       <Input
-        className="rounded-[var(--radius-pill)] border-[rgba(0,0,112,0.12)] pl-9"
-        placeholder="Busca global (nome, CPF, cargo, setor...)"
+        ref={inputRef}
+        className="bg-[var(--color-muted)] pl-9 pr-16 hover:bg-[var(--color-surface)] focus-visible:bg-[var(--color-surface)]"
+        placeholder="Buscar colaborador, CPF, cargo..."
         aria-label="Busca global"
         aria-autocomplete="list"
         aria-controls={listId}
@@ -129,12 +142,15 @@ export function GlobalSearch() {
         }}
         onKeyDown={onKeyDown}
       />
+      <kbd className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-1.5 py-0.5 font-sans text-[10px] font-semibold text-[var(--color-muted-foreground)] sm:block">
+        Ctrl K
+      </kbd>
 
       {open && query.trim().length >= 2 ? (
         <div
           id={listId}
           role="listbox"
-          className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 overflow-hidden rounded-[1.25rem] border border-[var(--color-border)] bg-[var(--color-card)] shadow-[var(--shadow-md)]"
+          className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-md)]"
         >
           {loading ? (
             <p className="px-4 py-3 text-sm text-[var(--color-muted-foreground)]">Buscando...</p>
@@ -159,11 +175,11 @@ export function GlobalSearch() {
                     onMouseEnter={() => setActiveIndex(index)}
                     onClick={() => goToEmployee(result.id)}
                   >
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-navy)] text-[10px] font-extrabold text-white">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-muted)] text-[var(--color-muted-foreground)]">
                       <UserRound className="h-3.5 w-3.5" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-sm font-bold text-[var(--color-heading)]">
+                      <p className="truncate text-sm font-semibold text-[var(--color-heading)]">
                         {result.name}
                       </p>
                       <p className="truncate text-xs text-[var(--color-muted-foreground)]">
@@ -185,7 +201,7 @@ export function GlobalSearch() {
                   ? `/colaboradores?q=${encodeURIComponent(query.trim())}`
                   : "/colaboradores"
               }
-              className="text-xs font-bold text-[var(--color-green)] hover:underline"
+              className="text-xs font-semibold text-[var(--color-green-text)] hover:underline"
               onClick={() => setOpen(false)}
             >
               Ver todos os resultados →

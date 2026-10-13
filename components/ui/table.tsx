@@ -5,7 +5,7 @@ export function Table({
   ...props
 }: React.HTMLAttributes<HTMLTableElement>) {
   return (
-    <div className="w-full max-h-[calc(100dvh-12rem)] overflow-auto">
+    <div className="w-full overflow-x-auto overscroll-x-contain md:max-h-[calc(100dvh-12rem)] md:overflow-y-auto">
       <table
         className={cn(
           "w-full caption-bottom border-separate border-spacing-0 text-sm",
@@ -21,7 +21,7 @@ export function TableHeader({
   className,
   ...props
 }: React.HTMLAttributes<HTMLTableSectionElement>) {
-  return <thead className={cn("[&_tr]:border-b", className)} {...props} />;
+  return <thead className={cn("[&_tr]:border-b [&_tr]:hover:bg-transparent", className)} {...props} />;
 }
 
 export function TableBody({
@@ -50,7 +50,7 @@ export function TableHead({
   return (
     <th
       className={cn(
-        "sticky top-0 z-20 h-11 border-b border-[var(--color-border)] bg-[var(--color-card)] px-4 text-left align-middle text-xs font-extrabold tracking-wide text-[var(--color-muted-foreground)] shadow-[0_1px_0_0_var(--color-border)]",
+        "z-20 h-10 whitespace-nowrap border-b border-[var(--color-border)] bg-[var(--color-card)] px-3 text-left align-middle text-[11px] font-semibold uppercase tracking-wider text-[var(--color-muted-foreground)] shadow-[0_1px_0_0_var(--color-border)] sm:px-4 md:sticky md:top-0",
         className,
       )}
       {...props}
@@ -64,7 +64,7 @@ export function TableCell({
 }: React.TdHTMLAttributes<HTMLTableCellElement>) {
   return (
     <td
-      className={cn("border-b border-[var(--color-border)] px-4 py-3 align-middle", className)}
+      className={cn("border-b border-[var(--color-border)] px-3 py-3 align-middle sm:px-4", className)}
       {...props}
     />
   );

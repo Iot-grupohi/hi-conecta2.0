@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { StatusBadge } from "@/components/hr/status-badge";
 import { TagBadge } from "@/components/hr/tag-badge";
 import { EmptyState } from "@/components/ui/empty-state";
+import { Avatar } from "@/components/ui/avatar";
 import { FormDialog, FormDialogFooter } from "@/components/ui/form-dialog";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { cn } from "@/lib/utils";
@@ -187,7 +188,7 @@ export function DepartmentsBoard({
         }
       />
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 [&>*:last-child]:col-span-2 sm:[&>*:last-child]:col-span-1">
         <SummaryStat label="Setores" value={visibleRows.length} hint="Com colaboradores ativos" />
         <SummaryStat label="Colaboradores ativos" value={totalHeadcount} hint="Alocados nos setores" />
         <SummaryStat label="Com gestor" value={withManager} hint="Setores com liderança definida" />
@@ -232,35 +233,31 @@ export function DepartmentsBoard({
                 key={row.department.id}
                 ref={open ? panelRef : undefined}
                 className={cn(
-                  "overflow-hidden rounded-[1.25rem] border bg-[var(--color-card)] shadow-[var(--shadow-sm)] transition-all duration-300",
+                  "overflow-hidden rounded-[var(--radius-lg)] border bg-[var(--color-card)] shadow-[var(--shadow-sm)] transition-[border-color,box-shadow] duration-200",
                   open
-                    ? "border-[rgba(0,217,49,0.45)] ring-2 ring-[rgba(0,217,49,0.18)] sm:col-span-2 xl:col-span-3"
-                    : "border-[var(--color-border)] hover:border-[rgba(0,217,49,0.3)] hover:shadow-[var(--shadow-md)]",
+                    ? "border-[rgba(0,217,49,0.45)] sm:col-span-2 xl:col-span-3"
+                    : "border-[var(--color-border)] hover:border-[var(--color-input-border-hover)]",
                 )}
               >
                 <button
                   type="button"
                   onClick={() => selectDepartment(row.department.id)}
                   aria-expanded={open}
-                  className="group relative w-full overflow-hidden p-4 text-left"
+                  className="group w-full p-4 text-left"
                 >
-                  <div
-                    className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[rgba(0,217,49,0.08)] blur-2xl"
-                    aria-hidden
-                  />
-
-                  <div className="relative flex items-start gap-3">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-navy)] text-xs font-extrabold text-white">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-info-soft)] text-xs font-semibold text-[var(--color-info-text)]">
                       {initials(row.department.name)}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-2">
                         <TagBadge tag={row.tag} />
-                        <span className="inline-flex min-w-7 items-center justify-center rounded-[var(--radius-pill)] bg-[var(--color-green)] px-2.5 py-0.5 text-[11px] font-extrabold text-[var(--color-navy)] shadow-[0_0_18px_-6px_rgba(0,217,49,0.7)]">
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold tabular-nums text-[var(--color-heading)]">
+                          <Users className="h-3.5 w-3.5 text-[var(--color-muted-foreground)]" />
                           {row.count}
                         </span>
                       </div>
-                      <p className="mt-2 truncate text-sm font-extrabold text-[var(--color-heading)]">
+                      <p className="mt-2 truncate text-sm font-semibold text-[var(--color-heading)]">
                         {row.department.name}
                       </p>
                     </div>
@@ -268,31 +265,31 @@ export function DepartmentsBoard({
 
                   <div
                     className={cn(
-                      "relative mt-4 grid gap-2 text-xs text-[var(--color-muted-foreground)]",
+                      "mt-4 grid gap-2 text-xs text-[var(--color-muted-foreground)]",
                       open && "md:grid-cols-2",
                     )}
                   >
                     <p className="flex items-center gap-2">
-                      <UserRound className="h-3.5 w-3.5 shrink-0 text-[var(--color-green)]" />
+                      <UserRound className="h-3.5 w-3.5 shrink-0" />
                       <span className="truncate">
-                        <span className="font-semibold text-[var(--color-foreground)]">Gestor:</span>{" "}
+                        <span className="font-medium text-[var(--color-foreground)]">Gestor:</span>{" "}
                         {row.department.managerName ?? "Não informado"}
                       </span>
                     </p>
                     <p className="flex items-center gap-2">
-                      <Building2 className="h-3.5 w-3.5 shrink-0 text-[var(--color-navy-mid)]" />
+                      <Building2 className="h-3.5 w-3.5 shrink-0" />
                       <span className="truncate">
-                        <span className="font-semibold text-[var(--color-foreground)]">Diretor:</span>{" "}
+                        <span className="font-medium text-[var(--color-foreground)]">Diretor:</span>{" "}
                         {row.department.directorName ?? "Não informado"}
                       </span>
                     </p>
                   </div>
 
-                  <div className="relative mt-4 flex items-center justify-between text-[11px] font-bold tracking-wide text-[var(--color-green)]">
+                  <div className="mt-4 flex items-center justify-between text-xs font-semibold text-[var(--color-green-text)]">
                     <span>{open ? "Recolher equipe" : "Ver equipe"}</span>
                     <ChevronDown
                       className={cn(
-                        "h-4 w-4 transition-transform duration-300",
+                        "h-4 w-4 transition-transform duration-200",
                         open && "rotate-180",
                       )}
                     />
@@ -332,8 +329,8 @@ export function DepartmentsBoard({
 
                 {open ? (
                   <div className="border-t border-[var(--color-border)] bg-[var(--color-muted)]/35 px-4 py-4">
-                    <div className="mb-3 flex items-center gap-2 text-sm font-extrabold text-[var(--color-heading)]">
-                      <Users className="h-4 w-4 text-[var(--color-green)]" />
+                    <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[var(--color-heading)]">
+                      <Users className="h-4 w-4 text-[var(--color-muted-foreground)]" />
                       Equipe ({row.count})
                     </div>
 
@@ -347,13 +344,11 @@ export function DepartmentsBoard({
                           <Link
                             key={employee.id}
                             href={`/colaboradores/${employee.id}`}
-                            className="flex items-center gap-3 rounded-[1rem] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-[rgba(0,217,49,0.35)] hover:shadow-[var(--shadow-sm)]"
+                            className="flex items-center gap-3 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2.5 transition-colors duration-150 hover:border-[var(--color-input-border-hover)]"
                           >
-                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[10px] font-extrabold text-[var(--color-navy)]">
-                              {initials(employee.name)}
-                            </div>
+                            <Avatar name={employee.name} />
                             <div className="min-w-0 flex-1">
-                              <p className="truncate text-sm font-bold text-[var(--color-heading)]">
+                              <p className="truncate text-sm font-medium text-[var(--color-heading)]">
                                 {employee.name}
                               </p>
                               <div className="mt-1">
@@ -460,10 +455,10 @@ function SummaryStat({
   hint: string;
 }) {
   return (
-    <div className="rounded-[1.25rem] border border-[var(--color-border)] bg-[var(--color-card)] p-4 shadow-[var(--shadow-sm)]">
-      <p className="text-xs font-bold tracking-wide text-[var(--color-muted-foreground)]">{label}</p>
-      <p className="brand-gradient-text mt-1 text-3xl font-extrabold tracking-tight">{value}</p>
-      <p className="mt-1 text-xs font-medium text-[var(--color-muted-foreground)]">{hint}</p>
+    <div className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-card)] p-5 shadow-[var(--shadow-sm)]">
+      <p className="text-[13px] font-medium text-[var(--color-muted-foreground)]">{label}</p>
+      <p className="mt-1 text-3xl font-bold tabular-nums tracking-tight text-[var(--color-heading)]">{value}</p>
+      <p className="mt-1 text-xs text-[var(--color-muted-foreground)]">{hint}</p>
     </div>
   );
 }

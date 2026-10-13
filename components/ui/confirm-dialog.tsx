@@ -57,11 +57,11 @@ export function ConfirmDialog({
       ? "bg-[var(--color-danger-soft)] text-[var(--color-danger)]"
       : tone === "warning"
         ? "bg-[var(--color-warning-soft)] text-[var(--color-warning)]"
-        : "bg-[var(--color-green-soft)] text-[var(--color-navy)]";
+        : "bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]";
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center sm:p-4"
       role="presentation"
     >
       <button
@@ -78,7 +78,7 @@ export function ConfirmDialog({
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={description ? descriptionId : undefined}
-        className="relative z-10 w-full max-w-md overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-md)]"
+        className="dialog-enter relative z-10 w-full overflow-hidden rounded-t-[var(--radius-lg)] border sm:max-w-md sm:rounded-[var(--radius-lg)] border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-md)]"
       >
         <div className="relative overflow-hidden px-6 pb-2 pt-6">
           <div
@@ -86,11 +86,11 @@ export function ConfirmDialog({
             style={{ background: "var(--gradient-brand)" }}
           />
           <div
-            className={`inline-flex rounded-[var(--radius-pill)] px-2.5 py-1 text-[10px] font-extrabold tracking-[0.14em] uppercase ${accent}`}
+            className={`inline-flex rounded-[var(--radius-pill)] px-2.5 py-1 text-[11px] font-semibold ${accent}`}
           >
             Confirmação
           </div>
-          <h2 id={titleId} className="mt-3 text-lg font-extrabold text-[var(--color-heading)]">
+          <h2 id={titleId} className="mt-3 text-lg font-semibold text-[var(--color-heading)]">
             {title}
           </h2>
           {description ? (
@@ -103,7 +103,7 @@ export function ConfirmDialog({
           ) : null}
         </div>
 
-        <div className="flex flex-wrap justify-end gap-2 px-6 py-5">
+        <div className="flex justify-end gap-2 px-6 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] [&>*]:flex-1 sm:[&>*]:flex-none">
           <Button type="button" variant="outline" size="sm" onClick={onCancel} disabled={pending}>
             {cancelLabel}
           </Button>

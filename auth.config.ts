@@ -1,13 +1,17 @@
 import type { NextAuthConfig } from "next-auth";
 import type { Role } from "@prisma/client";
-import type { Permission } from "@/lib/permissions";
+import {
+  hasPermission,
+  requiredPermissionForPath,
+  type Permission,
+} from "@/lib/permissions";
 
 function isPublicPath(pathname: string) {
   return pathname === "/login" || pathname.startsWith("/api/auth");
 }
 
 function isCollaboratorAllowed(pathname: string) {
-  return pathname.startsWith("/meu-espaco");
+  return pathname.startsWith("/meu-espaco") || pathname.startsWith("/api/documents");
 }
 
 export const authConfig = {
@@ -29,10 +33,16 @@ export const authConfig = {
         return true;
       }
 
-      if (!auth?.user) return false;
+      if (!auth?.user || !role) return false;
 
       if (role === "COLABORADOR" && !isCollaboratorAllowed(pathname)) {
         return Response.redirect(new URL("/meu-espaco", request.nextUrl));
+      }
+
+      const needed = requiredPermissionForPath(pathname);
+      if (needed && !hasPermission(role, needed)) {
+        const dest = role === "COLABORADOR" ? "/meu-espaco" : "/";
+        return Response.redirect(new URL(dest, request.nextUrl));
       }
 
       return true;

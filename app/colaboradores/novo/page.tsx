@@ -19,7 +19,12 @@ export default async function NewEmployeePage() {
         title="Novo colaborador"
         description="Cadastre um novo colaborador na base do Hi-Conecta RH."
       />
-      <EmployeeForm mode="create" departments={departments} positions={positions} canViewSalary />
+      <EmployeeForm
+        mode="create"
+        departments={departments}
+        positions={positions}
+        canViewSalary={hasPermission(session.user.role, "salary:read")}
+      />
     </div>
   );
 }

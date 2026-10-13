@@ -23,8 +23,6 @@ import urllib.error
 import urllib.request
 from collections import defaultdict
 
-DEFAULT_WEBHOOK = "https://grupohi.bitrix24.com.br/rest/721611/k3uer2sws2ck1imm/"
-
 USER_FIELDS = (
     "ID", "ACTIVE", "NAME", "LAST_NAME", "SECOND_NAME", "EMAIL", "WORK_POSITION",
     "PERSONAL_PROFESSION", "WORK_PHONE", "PERSONAL_MOBILE", "UF_PHONE_INNER",
@@ -296,13 +294,15 @@ def render_text(nodes, show_users=True):
 
 def main():
     ap = argparse.ArgumentParser(description="Árvore organizacional do Bitrix24")
-    ap.add_argument("--webhook", default=os.environ.get("BITRIX_WEBHOOK", DEFAULT_WEBHOOK))
+    ap.add_argument("--webhook", default=os.environ.get("BITRIX_WEBHOOK"))
     ap.add_argument("--inativos", action="store_true", help="inclui usuários desativados")
     ap.add_argument("--raiz", help="ID do departamento a usar como raiz")
     ap.add_argument("--saida", default="org_tree.json", help="arquivo JSON de saída")
     ap.add_argument("--texto", help="também salva a árvore em texto neste arquivo")
     ap.add_argument("--sem-usuarios", action="store_true", help="imprime só departamentos")
     args = ap.parse_args()
+    if not args.webhook:
+        ap.error("informe o webhook com --webhook ou a variável BITRIX_WEBHOOK")
 
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")

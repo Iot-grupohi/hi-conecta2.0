@@ -1,3 +1,5 @@
+import type { Role } from "@prisma/client";
+import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import {
   mapAso,
@@ -9,6 +11,7 @@ import {
   mapTermination,
   mapVacation,
 } from "@/lib/mappers";
+import { hasPermission } from "@/lib/permissions";
 import { toDisplayCase } from "@/lib/utils";
 import type { Employee, HrSeedData } from "@/types/hr";
 
@@ -17,8 +20,20 @@ const employeeInclude = {
   department: true,
 } as const;
 
+async function viewerCanReadSalary(employeeId?: string) {
+  const session = await auth();
+  if (!session?.user) return false;
+  if (employeeId && session.user.employeeId === employeeId) return true;
+  return hasPermission(session.user.role as Role, "salary:read");
+}
+
+function withoutSalary(employee: Employee): Employee {
+  return { ...employee, salary: null };
+}
+
 export async function getHrData(): Promise<HrSeedData> {
   const [
+    includeSalary,
     departments,
     positions,
     employees,
@@ -29,6 +44,7 @@ export async function getHrData(): Promise<HrSeedData> {
     asoExams,
     healthInsurance,
   ] = await Promise.all([
+    viewerCanReadSalary(),
     prisma.department.findMany({ orderBy: { name: "asc" } }),
     prisma.position.findMany({ orderBy: { name: "asc" } }),
     prisma.employee.findMany({
@@ -67,7 +83,10 @@ export async function getHrData(): Promise<HrSeedData> {
       name: toDisplayCase(position.name),
       departmentId: position.departmentId,
     })),
-    employees: employees.map(mapEmployee),
+    employees: employees.map((employee) => {
+      const mapped = mapEmployee(employee);
+      return includeSalary ? mapped : withoutSalary(mapped);
+    }),
     vacations: vacations.map(mapVacation),
     terminations: terminations.map(mapTermination),
     leaves: leaves.map(mapLeave),
@@ -93,11 +112,16 @@ export async function getHrData(): Promise<HrSeedData> {
 }
 
 export async function getEmployeeById(id: string): Promise<Employee | null> {
-  const employee = await prisma.employee.findUnique({
-    where: { id },
-    include: employeeInclude,
-  });
-  return employee ? mapEmployee(employee) : null;
+  const [employee, includeSalary] = await Promise.all([
+    prisma.employee.findUnique({
+      where: { id },
+      include: employeeInclude,
+    }),
+    viewerCanReadSalary(id),
+  ]);
+  if (!employee) return null;
+  const mapped = mapEmployee(employee);
+  return includeSalary ? mapped : withoutSalary(mapped);
 }
 
 export async function getDepartments() {

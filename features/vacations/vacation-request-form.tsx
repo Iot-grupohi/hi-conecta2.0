@@ -43,7 +43,7 @@ export function VacationRequestForm() {
     return (
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4 shadow-[var(--shadow-sm)]">
         <div>
-          <p className="text-sm font-extrabold text-[var(--color-heading)]">Nova solicitação</p>
+          <p className="text-sm font-semibold text-[var(--color-heading)]">Nova solicitação</p>
           <p className="mt-0.5 text-xs text-[var(--color-muted-foreground)]">
             Escolha o período e envie para o RH analisar.
           </p>
@@ -64,7 +64,7 @@ export function VacationRequestForm() {
     <section className="rounded-[var(--radius-lg)] border border-[rgba(0,217,49,0.35)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-sm)] md:p-6">
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-extrabold text-[var(--color-heading)]">Solicitar férias</p>
+          <p className="text-sm font-semibold text-[var(--color-heading)]">Solicitar férias</p>
           <p className="mt-0.5 text-xs text-[var(--color-muted-foreground)]">
             Informe início, término e, se quiser, uma observação.
           </p>

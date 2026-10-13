@@ -143,7 +143,7 @@ export function TerminationsTable({
         ) : null}
       </div>
 
-      <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mb-4 grid grid-cols-2 gap-3 xl:grid-cols-4">
         <CostStat label="Desligamentos" value={String(costs.count)} hint="Na lista filtrada" />
         <CostStat
           label="Total rescisões"
@@ -243,7 +243,7 @@ export function TerminationsTable({
                       {formatCurrency(item.grrfValue)}
                     </TableCell>
                     <TableCell className="text-right">
-                      <div className="tabular-nums font-extrabold text-[var(--color-heading)]">
+                      <div className="tabular-nums font-semibold text-[var(--color-heading)]">
                         {formatCurrency(total)}
                       </div>
                       <p className="mt-0.5 text-[10px] text-[var(--color-muted-foreground)]">
@@ -280,16 +280,16 @@ export function TerminationsTable({
                 );
               })}
               <TableRow className="bg-[var(--color-muted)]/40">
-                <TableCell colSpan={5} className="text-sm font-extrabold text-[var(--color-heading)]">
+                <TableCell colSpan={5} className="text-sm font-semibold text-[var(--color-heading)]">
                   Totais ({costs.count} desligamento{costs.count === 1 ? "" : "s"})
                 </TableCell>
-                <TableCell className="text-right text-sm font-extrabold tabular-nums">
+                <TableCell className="text-right text-sm font-semibold tabular-nums">
                   {formatCurrency(costs.rescission)}
                 </TableCell>
-                <TableCell className="text-right text-sm font-extrabold tabular-nums">
+                <TableCell className="text-right text-sm font-semibold tabular-nums">
                   {formatCurrency(costs.grrf)}
                 </TableCell>
-                <TableCell className="text-right text-sm font-extrabold tabular-nums text-[var(--color-navy)]">
+                <TableCell className="text-right text-sm font-semibold tabular-nums text-[var(--color-heading)]">
                   {formatCurrency(costs.total)}
                 </TableCell>
                 {canWrite ? <TableCell /> : null}
@@ -379,7 +379,7 @@ export function TerminationsTable({
           {editing ? (
             <p className="text-xs text-[var(--color-muted-foreground)]">
               Total demissional:{" "}
-              <span className="font-extrabold text-[var(--color-heading)]">
+              <span className="font-semibold text-[var(--color-heading)]">
                 {formatCurrency(terminationTotal(editing))}
               </span>{" "}
               (rescisão + GRRF)

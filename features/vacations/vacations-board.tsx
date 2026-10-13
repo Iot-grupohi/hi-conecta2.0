@@ -148,16 +148,14 @@ export function VacationsBoard({
 
   return (
     <div className="space-y-6">
-      <section className="relative overflow-hidden rounded-[var(--radius-lg)] text-white shadow-[var(--shadow-md)]">
-        <div className="absolute inset-0" style={{ background: "var(--gradient-mesh)" }} />
-        <div className="brand-orb -left-12 top-0 h-36 w-36 bg-[rgba(0,217,49,0.28)]" />
-        <div className="relative flex flex-wrap items-end justify-between gap-4 px-6 py-7 md:px-8">
+      <section>
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-[10px] font-bold tracking-[0.22em] text-[var(--color-green)] uppercase">
+            <p className="mb-1 text-xs font-semibold text-[var(--color-green-text)]">
               RH · DP
             </p>
-            <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white">Férias</h1>
-            <p className="mt-2 text-sm text-white/70">
+            <h1 className="brand-title text-2xl md:text-[1.75rem]">Férias</h1>
+            <p className="mt-1.5 text-sm text-[var(--color-muted-foreground)]">
               {inProgress.length > 0
                 ? `${inProgress.length} colaborador(es) em gozo de férias agora`
                 : portalPending > 0
@@ -184,7 +182,7 @@ export function VacationsBoard({
         </div>
       </section>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
         <Tab
           active={view === "aprovar"}
           onClick={() => setView("aprovar")}
@@ -381,18 +379,20 @@ function Tab({
     <button
       type="button"
       onClick={onClick}
-      className={`inline-flex items-center gap-2 rounded-[var(--radius-pill)] px-4 py-2 text-sm font-bold transition ${
+      className={`inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-[var(--radius-pill)] border px-4 py-2 text-sm font-medium transition-colors ${
         active
-          ? "bg-[var(--color-navy)] text-white"
+          ? "border-transparent bg-[var(--color-heading)] text-[var(--color-background)]"
           : emphasize
-            ? "border border-[rgba(0,217,49,0.45)] bg-[var(--color-green-soft)] text-[var(--color-navy)]"
-            : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-heading)] hover:border-[var(--color-navy)]"
+            ? "border-[rgba(0,217,49,0.45)] bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]"
+            : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-heading)] hover:border-[var(--color-input-border-hover)]"
       }`}
     >
       {label}
       <span
-        className={`rounded-full px-2 py-0.5 text-[11px] font-extrabold ${
-          active ? "bg-white/20 text-white" : "bg-[var(--color-muted)] text-[var(--color-heading)]"
+        className={`rounded-full px-2 py-0.5 text-[11px] font-semibold tabular-nums ${
+          active
+            ? "bg-[var(--color-background)]/20 text-[var(--color-background)]"
+            : "bg-[var(--color-muted)] text-[var(--color-heading)]"
         }`}
       >
         {count}
@@ -426,11 +426,11 @@ function ListRow({
     >
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-2">
-          <p className="truncate text-sm font-extrabold text-[var(--color-heading)]">
+          <p className="truncate text-sm font-semibold text-[var(--color-heading)]">
             {vacation.employeeName}
           </p>
           {showPortal && isPortalRequest(vacation) ? (
-            <span className="rounded-[var(--radius-pill)] bg-[var(--color-green-soft)] px-2 py-0.5 text-[10px] font-extrabold text-[var(--color-navy)]">
+            <span className="rounded-[var(--radius-pill)] bg-[var(--color-primary-soft)] px-2 py-0.5 text-[11px] font-semibold text-[var(--color-primary-text)]">
               Portal
             </span>
           ) : null}
@@ -481,11 +481,11 @@ function ApprovalCard({ vacation }: { vacation: Vacation }) {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <p className="text-sm font-extrabold text-[var(--color-heading)]">
+            <p className="text-sm font-semibold text-[var(--color-heading)]">
               {vacation.employeeName}
             </p>
             {portal ? (
-              <span className="rounded-[var(--radius-pill)] bg-[var(--color-green)] px-2 py-0.5 text-[10px] font-extrabold text-[var(--color-navy)]">
+              <span className="rounded-[var(--radius-pill)] bg-[var(--color-green)] px-2 py-0.5 text-[11px] font-semibold text-[var(--color-navy)]">
                 Portal
               </span>
             ) : null}

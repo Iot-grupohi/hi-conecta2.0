@@ -26,6 +26,7 @@ import {
   BriefcaseBusiness,
   CalendarDays,
   ClipboardList,
+  Download,
   FileText,
   ShieldPlus,
   UserRound,
@@ -50,20 +51,15 @@ function MeHero({
   actions?: React.ReactNode;
 }) {
   return (
-    <section className="relative mb-2 overflow-hidden rounded-[var(--radius-lg)] text-white shadow-[var(--shadow-md)]">
+    <section className="relative mb-2 overflow-hidden rounded-[var(--radius-lg)] text-white">
       <div className="absolute inset-0" style={{ background: "var(--gradient-mesh)" }} />
-      <div className="brand-orb -left-12 top-0 h-40 w-40 bg-[rgba(0,217,49,0.28)]" />
-      <div className="brand-orb -right-10 bottom-0 h-36 w-36 bg-[rgba(0,24,200,0.35)]" />
-      <div className="relative flex flex-col gap-5 px-6 py-8 md:flex-row md:items-end md:justify-between md:px-8 md:py-10">
+      <div className="brand-orb -right-16 -top-16 h-56 w-56 bg-[rgba(0,217,49,0.14)]" aria-hidden />
+      <div className="relative flex flex-col gap-5 px-6 py-7 md:flex-row md:items-end md:justify-between md:px-8 md:py-8">
         <div className="max-w-2xl">
-          <p className="text-[10px] font-bold tracking-[0.22em] text-[var(--color-green)] uppercase">
-            {eyebrow}
-          </p>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            {title}
-          </h1>
+          <p className="text-xs font-semibold text-[var(--color-green)]">{eyebrow}</p>
+          <h1 className="mt-2 text-2xl font-bold tracking-tight text-white md:text-3xl">{title}</h1>
           {description ? (
-            <p className="mt-3 text-sm font-medium leading-relaxed text-white/75">{description}</p>
+            <p className="mt-2 text-sm leading-relaxed text-white/70">{description}</p>
           ) : null}
         </div>
         {actions ? <div className="flex flex-wrap items-center gap-2">{actions}</div> : null}
@@ -82,10 +78,10 @@ function getInitials(name: string) {
 function ProfileFact({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="min-w-0">
-      <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-muted-foreground)] uppercase">
+      <p className="text-xs font-medium text-[var(--color-muted-foreground)]">
         {label}
       </p>
-      <div className="mt-2 text-sm font-extrabold text-[var(--color-heading)]">{value}</div>
+      <div className="mt-2 text-sm font-semibold text-[var(--color-heading)]">{value}</div>
     </div>
   );
 }
@@ -110,26 +106,24 @@ function SummaryCard({
       <div className="flex flex-col gap-5 px-5 py-6 md:flex-row md:items-center md:px-7">
         {avatar ? (
           <div
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-lg font-extrabold text-[var(--color-navy)]"
-            style={{ background: "linear-gradient(145deg, #e8fff0 0%, #dce4ff 100%)" }}
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[var(--color-info-soft)] text-base font-semibold text-[var(--color-info-text)]"
             aria-hidden
           >
             {avatar}
           </div>
         ) : Icon ? (
           <div
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-[var(--color-navy)]"
-            style={{ background: "linear-gradient(145deg, #e8fff0 0%, #dce4ff 100%)" }}
+            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-[var(--color-info-soft)] text-[var(--color-info-text)]"
             aria-hidden
           >
             <Icon className="h-7 w-7" />
           </div>
         ) : null}
         <div className="min-w-0 flex-1">
-          <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-green)] uppercase">
+          <p className="text-xs font-semibold text-[var(--color-green-text)]">
             {eyebrow}
           </p>
-          <h2 className="mt-1 truncate text-xl font-extrabold text-[var(--color-heading)]">
+          <h2 className="mt-1 truncate text-xl font-bold text-[var(--color-heading)]">
             {title}
           </h2>
           {badges ? <div className="mt-3 flex flex-wrap items-center gap-2">{badges}</div> : null}
@@ -169,10 +163,10 @@ function ContentBlock({
     <section
       className={`rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-sm)] md:p-6 ${className}`}
     >
-      <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-green)] uppercase">
+      <p className="text-xs font-semibold text-[var(--color-green-text)]">
         {eyebrow}
       </p>
-      <h3 className="mt-1 text-base font-extrabold text-[var(--color-heading)]">{title}</h3>
+      <h3 className="mt-1 text-base font-semibold text-[var(--color-heading)]">{title}</h3>
       <div className="mt-5">{children}</div>
     </section>
   );
@@ -191,12 +185,12 @@ function HighlightStrip({
     <section className="rounded-[var(--radius-lg)] border border-[rgba(0,217,49,0.3)] bg-[var(--color-green-soft)]/40 px-5 py-5 md:px-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-navy)] uppercase">
+          <p className="text-xs font-semibold text-[var(--color-heading)]">
             {label}
           </p>
           <p className="mt-1 text-sm text-[var(--color-muted-foreground)]">{hint}</p>
         </div>
-        <div className="text-2xl font-extrabold text-[var(--color-navy)]">{value}</div>
+        <div className="text-2xl font-bold tabular-nums text-[var(--color-heading)]">{value}</div>
       </div>
     </section>
   );
@@ -276,7 +270,7 @@ export function MeuEspacoHome({ employee, history }: { employee: Employee; histo
             <StatusBadge status={employee.status} />
             <Link
               href="/meu-espaco/ferias"
-              className="inline-flex h-9 items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--color-green)] px-4 text-xs font-extrabold text-[var(--color-navy)] transition hover:bg-[var(--color-green-hover)]"
+              className="inline-flex h-9 items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--color-green)] px-4 text-xs font-semibold text-[var(--color-navy)] transition-colors hover:bg-[var(--color-green-hover)]"
             >
               Solicitar férias
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -318,20 +312,20 @@ export function MeuEspacoHome({ employee, history }: { employee: Employee; histo
             <Link
               key={item.href}
               href={item.href}
-              className="group rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-sm)] transition hover:-translate-y-0.5 hover:border-[rgba(0,217,49,0.35)] md:p-6"
+              className="group rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-sm)] transition-colors hover:border-[var(--color-input-border-hover)] md:p-6"
             >
               <div className="flex items-start justify-between gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
                   <Icon className="h-5 w-5" />
                 </span>
-                <ArrowUpRight className="h-4 w-4 text-[var(--color-muted-foreground)] transition group-hover:text-[var(--color-green)]" />
+                <ArrowUpRight className="h-4 w-4 text-[var(--color-muted-foreground)] transition-colors group-hover:text-[var(--color-green-text)]" />
               </div>
-              <p className="mt-4 text-[10px] font-bold tracking-[0.16em] text-[var(--color-green)] uppercase">
+              <p className="mt-4 text-xs font-semibold text-[var(--color-green-text)]">
                 {item.eyebrow}
               </p>
-              <p className="mt-1 text-base font-extrabold text-[var(--color-heading)]">{item.label}</p>
+              <p className="mt-1 text-base font-semibold text-[var(--color-heading)]">{item.label}</p>
               <p className="mt-1 text-xs text-[var(--color-muted-foreground)]">{item.description}</p>
-              <p className="mt-4 text-xs font-semibold text-[var(--color-navy)]">{item.meta}</p>
+              <p className="mt-4 text-xs font-medium text-[var(--color-heading)]">{item.meta}</p>
             </Link>
           );
         })}
@@ -433,7 +427,7 @@ function VacationStatusLine({
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-extrabold text-[var(--color-heading)]">
+          <p className="text-sm font-semibold text-[var(--color-heading)]">
             {formatDate(item.startDate)} — {formatDate(item.endDate)}
           </p>
           <p className="mt-1 text-xs text-[var(--color-muted-foreground)]">
@@ -617,7 +611,7 @@ export function MeusBeneficiosSection({
           />
           <ContentBlock eyebrow="CAJU" title="Alimentação e mobilidade">
             <div className="mb-4 flex items-start gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
                 <WalletCards className="h-4 w-4" />
               </span>
               <p className="text-sm text-[var(--color-muted-foreground)]">
@@ -632,7 +626,7 @@ export function MeusBeneficiosSection({
                   className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] bg-[var(--color-muted)]/40 px-4 py-3"
                 >
                   <div>
-                    <p className="text-sm font-extrabold text-[var(--color-heading)]">
+                    <p className="text-sm font-semibold text-[var(--color-heading)]">
                       {item.monthLabel}/{item.year}
                       {item.isProportional ? " · proporcional" : ""}
                     </p>
@@ -646,7 +640,7 @@ export function MeusBeneficiosSection({
                           : ""}
                     </p>
                   </div>
-                  <p className="text-sm font-extrabold text-[var(--color-navy)]">
+                  <p className="text-sm font-semibold text-[var(--color-heading)]">
                     {formatCurrency(
                       (item.mealAmount ?? 0) +
                         (item.mobilityAmount ?? 0) +
@@ -669,7 +663,7 @@ export function MeusBeneficiosSection({
           />
           <ContentBlock eyebrow="Transporte" title="Histórico de vale transporte">
             <div className="mb-4 flex items-start gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
                 <Bus className="h-4 w-4" />
               </span>
               <p className="text-sm text-[var(--color-muted-foreground)]">
@@ -684,7 +678,7 @@ export function MeusBeneficiosSection({
                   className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] bg-[var(--color-muted)]/40 px-4 py-3"
                 >
                   <div>
-                    <p className="text-sm font-extrabold text-[var(--color-heading)]">
+                    <p className="text-sm font-semibold text-[var(--color-heading)]">
                       {item.monthLabel}/{item.year}
                       {item.isProportional ? " · proporcional" : ""}
                     </p>
@@ -699,7 +693,7 @@ export function MeusBeneficiosSection({
                         .join(" · ") || "Crédito mensal"}
                     </p>
                   </div>
-                  <p className="text-sm font-extrabold text-[var(--color-navy)]">
+                  <p className="text-sm font-semibold text-[var(--color-heading)]">
                     {formatCurrency(item.totalAmount)}
                   </p>
                 </div>
@@ -719,7 +713,7 @@ export function MeusBeneficiosSection({
 
           <ContentBlock eyebrow="Lavanderia" title="Histórico mensal">
             <div className="mb-4 flex items-start gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
                 <Shirt className="h-4 w-4" />
               </span>
               <p className="text-sm text-[var(--color-muted-foreground)]">
@@ -734,14 +728,14 @@ export function MeusBeneficiosSection({
                   className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] bg-[var(--color-muted)]/40 px-4 py-3"
                 >
                   <div>
-                    <p className="text-sm font-extrabold text-[var(--color-heading)]">
+                    <p className="text-sm font-semibold text-[var(--color-heading)]">
                       {item.monthLabel}/{item.year}
                     </p>
                     <p className="mt-1 text-xs text-[var(--color-muted-foreground)]">
                       {item.isProportional ? "Proporcional (meio do mês)" : "Valor integral"}
                     </p>
                   </div>
-                  <p className="text-sm font-extrabold text-[var(--color-navy)]">
+                  <p className="text-sm font-semibold text-[var(--color-heading)]">
                     {formatCurrency(item.amount)}
                   </p>
                 </div>
@@ -761,7 +755,7 @@ export function MeusBeneficiosSection({
 
           <ContentBlock eyebrow="Parceiro" title={`${partnerName} · até o vale`}>
             <div className="mb-4 flex items-start gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
                 <UtensilsCrossed className="h-4 w-4" />
               </span>
               <p className="text-sm text-[var(--color-muted-foreground)]">
@@ -776,14 +770,14 @@ export function MeusBeneficiosSection({
                   className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] bg-[var(--color-muted)]/40 px-4 py-3"
                 >
                   <div>
-                    <p className="text-sm font-extrabold text-[var(--color-heading)]">
+                    <p className="text-sm font-semibold text-[var(--color-heading)]">
                       {item.monthLabel}/{item.year}
                     </p>
                     <p className="mt-1 text-xs text-[var(--color-muted-foreground)]">
                       {item.orderDates || "Datas não informadas"} · {item.quantity} refeição(ões)
                     </p>
                   </div>
-                  <p className="text-sm font-extrabold text-[var(--color-navy)]">
+                  <p className="text-sm font-semibold text-[var(--color-heading)]">
                     {formatCurrency(item.consumptionValue)}
                   </p>
                 </div>
@@ -813,7 +807,7 @@ export function MeusBeneficiosSection({
 
         <ContentBlock eyebrow="Saúde" title="Plano médico">
           <div className="flex items-start gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
               <ShieldPlus className="h-4 w-4" />
             </span>
             <div>
@@ -836,7 +830,7 @@ export function MeusBeneficiosSection({
                 key={`${item.employeeId ?? "ins"}-${index}`}
                 className="rounded-[var(--radius-md)] bg-[var(--color-muted)]/40 px-4 py-3"
               >
-                <p className="text-sm font-extrabold text-[var(--color-heading)]">
+                <p className="text-sm font-semibold text-[var(--color-heading)]">
                   {item.provider ?? "Plano de saúde"}
                 </p>
                 <p className="mt-1 text-xs text-[var(--color-muted-foreground)]">{item.name}</p>
@@ -964,11 +958,11 @@ export function MeusDocumentosSection({ history }: { history: History }) {
                 className="flex flex-wrap items-center justify-between gap-3 rounded-[var(--radius-md)] bg-[var(--color-muted)]/40 px-4 py-3"
               >
                 <div className="flex min-w-0 items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
                     <FileText className="h-4 w-4" />
                   </span>
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-extrabold text-[var(--color-heading)]">
+                    <p className="truncate text-sm font-semibold text-[var(--color-heading)]">
                       {document.title}
                     </p>
                     <p className="truncate text-xs text-[var(--color-muted-foreground)]">
@@ -976,9 +970,18 @@ export function MeusDocumentosSection({ history }: { history: History }) {
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-semibold text-[var(--color-muted-foreground)]">
-                  {formatDate(document.createdAt.slice(0, 10))}
-                </span>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-semibold text-[var(--color-muted-foreground)]">
+                    {formatDate(document.createdAt.slice(0, 10))}
+                  </span>
+                  <Link
+                    href={`/api/documents/${document.id}`}
+                    className="inline-flex h-8 items-center gap-1.5 rounded-[var(--radius-md)] border border-[var(--color-border)] px-3 text-xs font-semibold hover:bg-[var(--color-muted)]"
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                    Baixar
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

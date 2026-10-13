@@ -23,7 +23,10 @@
   --color-muted: #eef1f8;
   --color-muted-foreground: #64748b;
   --color-border: rgba(148, 163, 184, 0.35);
+  --color-input-border: rgba(15, 23, 42, 0.14);
+  --color-input-border-hover: rgba(15, 23, 42, 0.26);
   --color-ring: #00d931;
+  --color-green-text: #00872a;
 
   /* Primary = Verde HI (ação / CTA) */
   --color-primary: #00d931;
@@ -43,52 +46,85 @@
   --color-danger-soft: #fee2e2;
   --color-info: #0018c8;
   --color-info-soft: #e8edff;
+  --color-neutral-soft: #eef1f8;
 
-  --radius-md: 0.875rem;
-  --radius-lg: 1.25rem;
+  /* Texto sobre os fundos *-soft (contraste AA em tags) */
+  --color-success-text: #067a24;
+  --color-warning-text: #9a4a06;
+  --color-danger-text: #b91c1c;
+  --color-info-text: #0018c8;
+  --color-neutral-text: #475569;
+  --color-primary-text: #000070;
+
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
   --radius-pill: 9999px;
-  --shadow-sm: 0 4px 24px -4px rgba(0, 0, 80, 0.08);
-  --shadow-md: 0 20px 40px -12px rgba(0, 0, 80, 0.18);
-  --shadow-glow: 0 0 60px -10px rgba(0, 217, 49, 0.45);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 80, 0.04), 0 2px 8px -2px rgba(0, 0, 80, 0.06);
+  --shadow-md: 0 12px 32px -12px rgba(0, 0, 80, 0.18);
+  --shadow-glow: 0 1px 2px rgba(0, 0, 80, 0.12), 0 4px 12px -6px rgba(0, 217, 49, 0.6);
   --gradient-brand: linear-gradient(104deg, #000070 30%, #00d931 150%);
   --gradient-mesh: linear-gradient(135deg, #000042 0%, #000070 45%, #0018c8 100%);
   --gradient-text: linear-gradient(135deg, #000070, #0018c8, #00d931);
 }
 
+/*
+ * Tema escuro: azul-marinho dessaturado em camadas opacas
+ * (fundo < card < superfície elevada). O verde da marca fica
+ * reservado para ações; status usam tons mais suaves.
+ */
 html[data-theme="dark"] {
-  --color-background: #000042;
-  --color-foreground: #f8fafc;
-  --color-heading: #ffffff;
-  --color-surface: #000070;
-  --color-card: rgba(255, 255, 255, 0.06);
-  --color-card-foreground: #f8fafc;
-  --color-sidebar: #000030;
+  --color-background: #0b1020;
+  --color-foreground: #d5dcea;
+  --color-heading: #f1f4f9;
+  --color-surface: #161e33;
+  --color-card: #111829;
+  --color-card-foreground: #d5dcea;
+  --color-sidebar: #080c19;
   --color-sidebar-foreground: #ffffff;
-  --color-muted: rgba(255, 255, 255, 0.08);
-  --color-muted-foreground: #94a3b8;
-  --color-border: rgba(255, 255, 255, 0.12);
+  --color-muted: #1a2339;
+  --color-muted-foreground: #8b97ad;
+  --color-border: #1f2940;
+  --color-input-border: #2a3551;
+  --color-input-border-hover: #3b4868;
   --color-ring: #00d931;
+  --color-green-text: #4fdc7b;
+  --color-green-soft: rgba(0, 217, 49, 0.1);
 
   --color-primary: #00d931;
-  --color-primary-hover: #00ee38;
-  --color-primary-foreground: #000070;
-  --color-primary-soft: rgba(0, 217, 49, 0.16);
+  --color-primary-hover: #19e44a;
+  --color-primary-foreground: #000042;
+  --color-primary-soft: rgba(0, 217, 49, 0.12);
 
-  --color-secondary: rgba(255, 255, 255, 0.1);
-  --color-secondary-foreground: #ffffff;
-  --color-secondary-hover: rgba(255, 255, 255, 0.16);
+  --color-secondary: #1a2339;
+  --color-secondary-foreground: #f1f4f9;
+  --color-secondary-hover: #222c45;
 
-  --color-success: #00d931;
-  --color-success-soft: rgba(0, 217, 49, 0.16);
-  --color-warning: #fbbf24;
-  --color-warning-soft: rgba(251, 191, 36, 0.16);
-  --color-danger: #f87171;
-  --color-danger-soft: rgba(248, 113, 113, 0.16);
-  --color-info: #93c5fd;
-  --color-info-soft: rgba(147, 197, 253, 0.16);
+  --color-success: #34c76a;
+  --color-success-soft: rgba(52, 199, 106, 0.14);
+  --color-warning: #e9ad4a;
+  --color-warning-soft: rgba(233, 173, 74, 0.14);
+  --color-danger: #ea7676;
+  --color-danger-soft: rgba(234, 118, 118, 0.14);
+  --color-info: #7d9df5;
+  --color-info-soft: rgba(125, 157, 245, 0.14);
+  --color-neutral-soft: rgba(148, 163, 184, 0.12);
 
-  --shadow-sm: 0 4px 24px -4px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 20px 40px -12px rgba(0, 0, 0, 0.45);
+  --color-success-text: #6ad891;
+  --color-warning-text: #f0c070;
+  --color-danger-text: #f3a1a1;
+  --color-info-text: #a8bdf7;
+  --color-neutral-text: #c0c9d8;
+  --color-primary-text: #e6ebf3;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 4px 14px -6px rgba(0, 217, 49, 0.35);
+  --gradient-mesh: linear-gradient(135deg, #0d1430 0%, #111c4d 55%, #1a2c80 100%);
+}
+
+html[data-theme="dark"] ::selection {
+  background: rgba(0, 217, 49, 0.3);
+  color: #ffffff;
 }
 
 @theme inline {
@@ -103,6 +139,56 @@ html[data-theme="dark"] {
 
 html {
   color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@keyframes drawer-slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+.drawer-slide {
+  animation: drawer-slide-in 200ms ease-out;
+}
+
+.drawer-fade {
+  animation: fade-in 200ms ease-out;
+}
+
+.dialog-enter {
+  animation: sheet-up 180ms ease-out;
+}
+
+/* iOS dá zoom ao focar campos com fonte < 16px */
+@media (max-width: 639px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-slide,
+  .drawer-fade,
+  .dialog-enter {
+    animation: none;
+  }
 }
 
 html[data-theme="dark"] {
@@ -120,7 +206,7 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
-  font-weight: 500;
+  font-weight: 400;
   text-transform: none;
   letter-spacing: normal;
   text-rendering: optimizeLegibility;
@@ -131,7 +217,7 @@ h1,
 h2,
 h3,
 .brand-title {
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -170,6 +256,14 @@ html[data-theme="dark"] .brand-gradient-text {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.select-chevron {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+  background-size: 1rem;
 }
 
 .brand-orb {

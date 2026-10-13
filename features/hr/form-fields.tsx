@@ -21,7 +21,7 @@ export function EmployeePicker({
         Colaborador
       </label>
       <select
-        className="h-10 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 text-sm"
+        className={fieldClass}
         value={employeeId}
         onChange={(event) => {
           const id = event.target.value;
@@ -52,7 +52,7 @@ export function EmployeePicker({
           onChange({ employeeId, employeeName: event.target.value })
         }
         placeholder="Ou digite o nome"
-        className="h-10 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 text-sm"
+        className={fieldClass}
       />
     </div>
   );
@@ -74,4 +74,4 @@ export function Field({
 }
 
 export const fieldClass =
-  "h-10 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-3 text-sm";
+  "h-10 w-full rounded-[var(--radius-md)] border border-[var(--color-input-border)] bg-[var(--color-surface)] px-3 text-base text-[var(--color-foreground)] transition-[border-color,box-shadow] duration-150 hover:border-[var(--color-input-border-hover)] focus-visible:border-[var(--color-ring)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(0,217,49,0.18)] sm:text-sm";

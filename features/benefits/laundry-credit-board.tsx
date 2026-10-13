@@ -122,18 +122,16 @@ export function LaundryCreditBoard({
 
   return (
     <div className="space-y-6">
-      <section className="relative overflow-hidden rounded-[var(--radius-lg)] text-white shadow-[var(--shadow-md)]">
-        <div className="absolute inset-0" style={{ background: "var(--gradient-mesh)" }} />
-        <div className="brand-orb -left-12 top-0 h-36 w-36 bg-[rgba(0,217,49,0.28)]" />
-        <div className="relative flex flex-wrap items-end justify-between gap-4 px-6 py-7 md:px-8">
+      <section>
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-[10px] font-bold tracking-[0.22em] text-[var(--color-green)] uppercase">
+            <p className="mb-1 text-xs font-semibold text-[var(--color-green-text)]">
               Benefícios · Lavanderia
             </p>
-            <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white">
+            <h1 className="brand-title text-2xl md:text-[1.75rem]">
               Crédito lavanderia
             </h1>
-            <p className="mt-2 max-w-2xl text-sm text-white/70">
+            <p className="mt-2 max-w-2xl text-sm text-[var(--color-muted-foreground)]">
               Todos recebem R$ 120,00 por mês. Quem entra no meio do mês recebe valor proporcional.
             </p>
           </div>
@@ -146,7 +144,7 @@ export function LaundryCreditBoard({
         </div>
       </section>
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
         <Stat label="Colaboradores" value={String(stats.people)} />
         <Stat label="Lançamentos" value={String(stats.credits)} />
         <Stat label="Proporcionais" value={String(stats.proportional)} />
@@ -177,7 +175,7 @@ export function LaundryCreditBoard({
             <select
               value={monthFilter}
               onChange={(event) => setMonthFilter(event.target.value)}
-              className="h-10 rounded-[var(--radius-pill)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm font-semibold"
+              className="select-chevron h-10 w-full cursor-pointer rounded-[var(--radius-pill)] border border-[var(--color-input-border)] bg-[var(--color-surface)] pl-4 pr-10 text-base text-[var(--color-foreground)] hover:border-[var(--color-input-border-hover)] focus-visible:border-[var(--color-ring)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(0,217,49,0.18)] sm:w-auto sm:text-sm"
               aria-label="Filtrar mês"
             >
               <option value="todos">Todos os meses</option>
@@ -206,11 +204,11 @@ export function LaundryCreditBoard({
                   }`}
                 >
                   <div className="flex min-w-0 items-start gap-3">
-                    <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-green-soft)] text-[var(--color-navy)]">
+                    <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary-soft)] text-[var(--color-primary-text)]">
                       <Shirt className="h-4 w-4" />
                     </span>
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-extrabold text-[var(--color-heading)]">
+                      <p className="truncate text-sm font-semibold text-[var(--color-heading)]">
                         {person.employeeName}
                       </p>
                       <p className="mt-1 text-xs text-[var(--color-muted-foreground)]">
@@ -222,10 +220,10 @@ export function LaundryCreditBoard({
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-extrabold text-[var(--color-heading)]">
+                    <p className="text-sm font-semibold text-[var(--color-heading)]">
                       {formatCurrency(person.total)}
                     </p>
-                    <p className="mt-1 text-xs font-semibold text-[var(--color-green)]">
+                    <p className="mt-1 text-xs font-semibold text-[var(--color-green-text)]">
                       Ver histórico
                     </p>
                   </div>
@@ -369,16 +367,15 @@ function PersonHistory({
         <div className="flex flex-col gap-5 px-5 py-6 md:flex-row md:items-center md:justify-between md:px-7">
           <div className="flex items-center gap-4">
             <span
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-[var(--color-navy)]"
-              style={{ background: "linear-gradient(145deg, #e8fff0 0%, #dce4ff 100%)" }}
+              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-[var(--color-info-soft)] text-[var(--color-info-text)]"
             >
               <Shirt className="h-7 w-7" />
             </span>
             <div className="min-w-0">
-              <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-green)] uppercase">
+              <p className="text-xs font-semibold text-[var(--color-green-text)]">
                 Histórico de lavanderia
               </p>
-              <h2 className="mt-1 truncate text-xl font-extrabold text-[var(--color-heading)]">
+              <h2 className="mt-1 truncate text-xl font-bold text-[var(--color-heading)]">
                 {person.employeeName}
               </h2>
             </div>
@@ -386,7 +383,7 @@ function PersonHistory({
           {person.employeeId ? (
             <Link
               href={`/colaboradores/${person.employeeId}?returnTo=${encodeURIComponent("/credito-lavanderia")}`}
-              className="inline-flex h-9 items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--color-navy)] px-4 text-xs font-extrabold !text-white hover:!text-white"
+              className="inline-flex h-9 items-center gap-2 rounded-[var(--radius-pill)] border border-[var(--color-input-border)] bg-[var(--color-surface)] px-4 text-xs font-semibold text-[var(--color-heading)] transition-colors hover:border-[var(--color-input-border-hover)] hover:bg-[var(--color-muted)]"
             >
               Ficha completa
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -403,19 +400,19 @@ function PersonHistory({
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-green)] uppercase">
+                <p className="text-xs font-semibold text-[var(--color-green-text)]">
                   {item.isProportional ? "Proporcional" : "Crédito integral"}
                 </p>
-                <h4 className="mt-1 text-base font-extrabold text-[var(--color-heading)]">
+                <h4 className="mt-1 text-base font-semibold text-[var(--color-heading)]">
                   {item.monthLabel}/{item.year}
                 </h4>
               </div>
               <div className="flex items-center gap-2">
                 <div
-                  className={`rounded-[var(--radius-pill)] px-3 py-1.5 text-sm font-extrabold ${
+                  className={`rounded-[var(--radius-pill)] px-3 py-1.5 text-sm font-semibold tabular-nums ${
                     item.isProportional
-                      ? "bg-[var(--color-warning-soft)] text-[var(--color-warning)]"
-                      : "bg-[var(--color-navy)] text-white"
+                      ? "bg-[var(--color-warning-soft)] text-[var(--color-warning-text)]"
+                      : "bg-[var(--color-muted)] text-[var(--color-heading)]"
                   }`}
                 >
                   {formatCurrency(item.amount)}
@@ -446,11 +443,11 @@ function PersonHistory({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4">
-      <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-muted-foreground)] uppercase">
+    <div className="min-w-0 rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3.5 sm:px-5 sm:py-4">
+      <p className="text-xs font-medium text-[var(--color-muted-foreground)]">
         {label}
       </p>
-      <p className="mt-2 text-2xl font-extrabold text-[var(--color-heading)]">{value}</p>
+      <p className="mt-1.5 break-words text-lg font-bold tabular-nums text-[var(--color-heading)] sm:mt-2 sm:text-2xl">{value}</p>
     </div>
   );
 }

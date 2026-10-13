@@ -114,20 +114,22 @@ export function EmployeeDocumentsPanel({
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Link
-                    href={`/api/documents/${document.id}`}
-                    className="inline-flex h-8 items-center gap-1.5 rounded-[var(--radius-md)] border border-[var(--color-border)] px-3 text-xs font-medium hover:bg-[var(--color-muted)]"
-                  >
-                    <Download className="h-3.5 w-3.5" />
-                    Baixar
-                  </Link>
                   {canManage ? (
-                    <form action={deleteEmployeeDocumentAction}>
-                      <input type="hidden" name="id" value={document.id} />
-                      <Button type="submit" variant="ghost" size="sm" aria-label="Excluir documento">
-                        <Trash2 className="h-4 w-4 text-[var(--color-danger)]" />
-                      </Button>
-                    </form>
+                    <>
+                      <Link
+                        href={`/api/documents/${document.id}`}
+                        className="inline-flex h-8 items-center gap-1.5 rounded-[var(--radius-md)] border border-[var(--color-border)] px-3 text-xs font-medium hover:bg-[var(--color-muted)]"
+                      >
+                        <Download className="h-3.5 w-3.5" />
+                        Baixar
+                      </Link>
+                      <form action={deleteEmployeeDocumentAction}>
+                        <input type="hidden" name="id" value={document.id} />
+                        <Button type="submit" variant="ghost" size="sm" aria-label="Excluir documento">
+                          <Trash2 className="h-4 w-4 text-[var(--color-danger)]" />
+                        </Button>
+                      </form>
+                    </>
                   ) : null}
                 </div>
               </div>

@@ -3,7 +3,7 @@ export function BrandMark({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
 
   return (
     <div
-      className={`flex ${dim} items-center justify-center rounded-full bg-[var(--color-green)] font-extrabold text-[var(--color-navy)] shadow-[0_0_24px_-6px_rgba(0,217,49,0.55)]`}
+      className={`flex ${dim} items-center justify-center rounded-full bg-[var(--color-green)] font-extrabold text-[var(--color-navy)]`}
       aria-hidden
     >
       HI

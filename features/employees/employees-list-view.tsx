@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Download, Eye, Pencil, Plus, Search } from "lucide-react";
+import { Download, Eye, Pencil, Plus } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { Avatar } from "@/components/ui/avatar";
+import { Button, buttonClasses } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import {
   Table,
@@ -21,11 +21,14 @@ import { StatusBadge } from "@/components/hr/status-badge";
 import { TagBadge } from "@/components/hr/tag-badge";
 import { filterEmployees, formatDate, formatSalary } from "@/lib/hr";
 import { resolveContractTag, resolveDepartmentTag, resolvePositionTag } from "@/lib/tags";
-import { buildEmployeesListHref } from "@/lib/utils";
+import { buildEmployeesListHref, cn } from "@/lib/utils";
 import { DeleteEmployeeButton } from "@/features/employees/delete-employee-button";
 import type { Department, Employee, EmployeeStatus, Position } from "@/types/hr";
 import type { Permission } from "@/lib/permissions";
 import { Card } from "@/components/ui/card";
+
+const rowActionClass =
+  "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-muted-foreground)] transition-colors hover:bg-[var(--color-muted)] hover:text-[var(--color-heading)]";
 
 export function EmployeesListView({
   employees,
@@ -163,10 +166,7 @@ export function EmployeesListView({
               Exportar CSV
             </Button>
             {canCreate ? (
-              <Link
-                href="/colaboradores/novo"
-                className="inline-flex h-10 items-center justify-center gap-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] px-4 text-sm font-medium text-[var(--color-primary-foreground)] hover:bg-[var(--color-primary-hover)]"
-              >
+              <Link href="/colaboradores/novo" className={buttonClasses()}>
                 <Plus className="h-4 w-4" />
                 Novo colaborador
               </Link>
@@ -175,81 +175,76 @@ export function EmployeesListView({
         }
       />
 
-      <Card className="mb-4 p-4">
-        <div className="grid gap-3 lg:grid-cols-5">
-          <div className="relative lg:col-span-2">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--color-muted-foreground)]" />
-            <Input
-              className="pl-9"
-              placeholder="Buscar por nome, CPF, cargo ou setor"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              aria-label="Buscar colaboradores"
-            />
-          </div>
-          <Select
-            value={status}
-            onChange={(event) => setStatus(event.target.value as EmployeeStatus | "todos")}
-            aria-label="Filtrar por status"
-          >
-            <option value="todos">Todos os status</option>
-            <option value="ativo">Ativo</option>
-            <option value="ferias">Férias</option>
-            <option value="afastado">Afastado</option>
-            <option value="desligado">Desligado</option>
-          </Select>
-          <Select
-            value={departmentId}
-            onChange={(event) => setDepartmentId(event.target.value)}
-            aria-label="Filtrar por departamento"
-          >
-            <option value="todos">Todos os setores</option>
-            <option value="sem">Sem setor definido</option>
-            {departments.map((department) => (
-              <option key={department.id} value={department.id}>
-                {department.name}
-              </option>
-            ))}
-          </Select>
-          <Select
-            value={`${sortBy}:${sortDir}`}
-            onChange={(event) => {
-              const [nextSort, nextDir] = event.target.value.split(":") as [
-                typeof sortBy,
-                typeof sortDir,
-              ];
-              setSortBy(nextSort);
-              setSortDir(nextDir);
-            }}
-            aria-label="Ordenar colaboradores"
-          >
-            <option value="name:asc">Nome (A-Z)</option>
-            <option value="name:desc">Nome (Z-A)</option>
-            <option value="hireDate:desc">Admissão (mais recente)</option>
-            <option value="hireDate:asc">Admissão (mais antiga)</option>
-            <option value="department:asc">Setor (A-Z)</option>
-            <option value="salary:desc">Salário (maior)</option>
-            <option value="salary:asc">Salário (menor)</option>
-          </Select>
-        </div>
-        <p className="mt-3 text-xs text-[var(--color-muted-foreground)]">
-          Exibindo {filtered.length} de {employees.length} colaboradores
-          {positionId !== "todos" && positionName ? (
-            <>
-              {" "}
-              · filtrado por cargo: <strong>{positionName}</strong>
-              {" "}
-              <button
-                type="button"
-                className="font-bold text-[var(--color-green)] hover:underline"
-                onClick={() => setPositionId("todos")}
-              >
-                Limpar
-              </button>
-            </>
-          ) : null}
-        </p>
-      </Card>
+      <DataToolbar
+        query={query}
+        onQueryChange={setQuery}
+        queryPlaceholder="Buscar por nome, CPF, cargo ou setor"
+        filters={[
+          {
+            id: "status",
+            label: "Filtrar por status",
+            value: status,
+            onChange: (value) => setStatus(value as EmployeeStatus | "todos"),
+            options: [
+              { value: "todos", label: "Todos os status" },
+              { value: "ativo", label: "Ativo" },
+              { value: "ferias", label: "Férias" },
+              { value: "afastado", label: "Afastado" },
+              { value: "desligado", label: "Desligado" },
+            ],
+          },
+          {
+            id: "setor",
+            label: "Filtrar por departamento",
+            value: departmentId,
+            onChange: setDepartmentId,
+            options: [
+              { value: "todos", label: "Todos os setores" },
+              { value: "sem", label: "Sem setor definido" },
+              ...departments.map((department) => ({ value: department.id, label: department.name })),
+            ],
+          },
+        ]}
+        sortOptions={[
+          { value: "name:asc", label: "Nome (A-Z)" },
+          { value: "name:desc", label: "Nome (Z-A)" },
+          { value: "hireDate:desc", label: "Admissão (mais recente)" },
+          { value: "hireDate:asc", label: "Admissão (mais antiga)" },
+          { value: "department:asc", label: "Setor (A-Z)" },
+          ...(canViewSalary
+            ? [
+                { value: "salary:desc", label: "Salário (maior)" },
+                { value: "salary:asc", label: "Salário (menor)" },
+              ]
+            : []),
+        ]}
+        sortValue={`${sortBy}:${sortDir}`}
+        onSortChange={(value) => {
+          const [nextSort, nextDir] = value.split(":") as [typeof sortBy, typeof sortDir];
+          setSortBy(nextSort);
+          setSortDir(nextDir);
+        }}
+        resultCount={filtered.length}
+        totalCount={employees.length}
+        summary={
+          <>
+            Exibindo {filtered.length} de {employees.length} colaboradores
+            {positionId !== "todos" && positionName ? (
+              <>
+                {" "}
+                · filtrado por cargo: <strong>{positionName}</strong>{" "}
+                <button
+                  type="button"
+                  className="font-semibold text-[var(--color-green-text)] hover:underline"
+                  onClick={() => setPositionId("todos")}
+                >
+                  Limpar
+                </button>
+              </>
+            ) : null}
+          </>
+        }
+      />
 
       {filtered.length === 0 ? (
         <EmptyState
@@ -270,11 +265,53 @@ export function EmployeesListView({
           }
         />
       ) : (
-        <Card>
+        <>
+        <ul className="divide-y divide-[var(--color-border)] overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-card)] shadow-[var(--shadow-sm)] md:hidden">
+          {filtered.map((employee) => (
+            <li key={employee.id} className="flex items-start gap-3 px-4 py-3">
+              <Link
+                href={`/colaboradores/${employee.id}?returnTo=${encodeURIComponent(listHref)}`}
+                className="flex min-w-0 flex-1 items-start gap-3"
+              >
+                <Avatar name={employee.name} className="mt-0.5" />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="min-w-0 truncate text-sm font-medium text-[var(--color-heading)]">
+                      {employee.name}
+                    </p>
+                    <StatusBadge status={employee.status} />
+                  </div>
+                  <p className="mt-0.5 truncate text-xs text-[var(--color-muted-foreground)]">
+                    {[employee.positionName, employee.departmentName].filter(Boolean).join(" · ") ||
+                      "Sem cargo definido"}
+                  </p>
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    <TagBadge tag={resolveContractTag(employee.contractType)} />
+                    {employee.hireDate ? (
+                      <span className="text-xs tabular-nums text-[var(--color-muted-foreground)]">
+                        Desde {formatDate(employee.hireDate)}
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
+              </Link>
+              {canUpdate ? (
+                <Link
+                  href={editHref(employee.id)}
+                  className={cn(rowActionClass, "-mr-1 h-10 w-10")}
+                  aria-label={`Editar ${employee.name}`}
+                >
+                  <Pencil className="h-4 w-4" />
+                </Link>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+        <Card className="hidden md:block">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="min-w-[10rem]">Colaborador</TableHead>
+                <TableHead className="min-w-[15rem]">Colaborador</TableHead>
                 <TableHead className="whitespace-nowrap">Contrato</TableHead>
                 <TableHead className="whitespace-nowrap">Status</TableHead>
                 <TableHead className="min-w-[12rem]">Cargo</TableHead>
@@ -288,7 +325,22 @@ export function EmployeesListView({
               {filtered.map((employee) => (
                 <TableRow key={employee.id}>
                   <TableCell>
-                    <span className="font-medium">{employee.name}</span>
+                    <Link
+                      href={`/colaboradores/${employee.id}?returnTo=${encodeURIComponent(listHref)}`}
+                      className="group flex items-center gap-3"
+                    >
+                      <Avatar name={employee.name} />
+                      <span className="min-w-0">
+                        <span className="block truncate font-medium text-[var(--color-heading)] group-hover:underline">
+                          {employee.name}
+                        </span>
+                        {employee.cpf ? (
+                          <span className="block text-xs tabular-nums text-[var(--color-muted-foreground)]">
+                            {employee.cpf}
+                          </span>
+                        ) : null}
+                      </span>
+                    </Link>
                   </TableCell>
                   <TableCell className="whitespace-nowrap">
                     <TagBadge tag={resolveContractTag(employee.contractType)} />
@@ -314,7 +366,7 @@ export function EmployeesListView({
                     <div className="inline-flex flex-nowrap items-center justify-end gap-0.5">
                       <Link
                         href={`/colaboradores/${employee.id}?returnTo=${encodeURIComponent(listHref)}`}
-                        className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
+                        className={rowActionClass}
                         aria-label={`Ver ${employee.name}`}
                         title="Ver"
                       >
@@ -323,7 +375,7 @@ export function EmployeesListView({
                       {canUpdate ? (
                         <Link
                           href={editHref(employee.id)}
-                          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
+                          className={rowActionClass}
                           aria-label={`Editar ${employee.name}`}
                           title="Editar"
                         >
@@ -345,6 +397,7 @@ export function EmployeesListView({
             </TableBody>
           </Table>
         </Card>
+        </>
       )}
     </div>
   );

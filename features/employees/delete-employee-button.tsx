@@ -39,7 +39,7 @@ export function DeleteEmployeeButton({
             onClick={open}
             className={
               iconOnly
-                ? "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-danger)] hover:bg-[var(--color-danger-soft)]"
+                ? "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-muted-foreground)] transition-colors hover:bg-[var(--color-danger-soft)] hover:text-[var(--color-danger-text)]"
                 : "inline-flex h-8 items-center gap-1.5 rounded-[var(--radius-md)] px-3 text-xs font-medium text-[var(--color-danger)] hover:bg-[var(--color-danger-soft)]"
             }
             aria-label={`Apagar ${employeeName}`}

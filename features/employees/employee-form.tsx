@@ -131,10 +131,7 @@ export function EmployeeForm({
                 placeholder="0.00"
               />
             ) : (
-              <>
-                <Input value="R$ ••••••" disabled readOnly aria-label="Salário mascarado" />
-                <input type="hidden" name="salary" value={employee?.salary != null ? String(employee.salary) : ""} />
-              </>
+              <Input value="R$ ••••••" disabled readOnly aria-label="Salário mascarado" />
             )}
           </Field>
           <Field label="Escala">

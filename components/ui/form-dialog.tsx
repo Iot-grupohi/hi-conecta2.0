@@ -45,7 +45,7 @@ export function FormDialog({
   if (!open || typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" role="presentation">
+    <div className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center sm:p-4" role="presentation">
       <button
         type="button"
         aria-label="Fechar"
@@ -59,11 +59,11 @@ export function FormDialog({
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={description ? descriptionId : undefined}
-        className="relative z-10 flex max-h-[90vh] w-full max-w-lg flex-col overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-md)]"
+        className="dialog-enter relative z-10 flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-md)] sm:max-h-[90dvh] sm:max-w-lg sm:rounded-[var(--radius-lg)]"
       >
         <div className="flex items-start justify-between gap-3 border-b border-[var(--color-border)] px-5 py-4">
           <div className="min-w-0">
-            <h2 id={titleId} className="text-base font-extrabold text-[var(--color-heading)]">
+            <h2 id={titleId} className="text-base font-semibold text-[var(--color-heading)]">
               {title}
             </h2>
             {description ? (
@@ -85,7 +85,7 @@ export function FormDialog({
         </div>
         <div className="overflow-y-auto px-5 py-4">{children}</div>
         {footer ? (
-          <div className="flex flex-wrap items-center justify-end gap-2 border-t border-[var(--color-border)] bg-[var(--color-muted)]/30 px-5 py-3">
+          <div className="flex items-center justify-end gap-2 border-t border-[var(--color-border)] bg-[var(--color-muted)]/30 px-5 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] [&>*]:flex-1 sm:[&>*]:flex-none">
             {footer}
           </div>
         ) : null}

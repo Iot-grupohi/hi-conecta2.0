@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFile } from "fs/promises";
 import path from "path";
+import type { Role } from "@prisma/client";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { canReadEmployeeDocument } from "@/lib/permissions";
 
 export async function GET(
   _request: NextRequest,
@@ -17,6 +19,15 @@ export async function GET(
   const document = await prisma.employeeDocument.findUnique({ where: { id } });
   if (!document) {
     return NextResponse.json({ error: "Documento não encontrado" }, { status: 404 });
+  }
+
+  const allowed = canReadEmployeeDocument({
+    role: session.user.role as Role,
+    viewerEmployeeId: session.user.employeeId,
+    documentEmployeeId: document.employeeId,
+  });
+  if (!allowed) {
+    return NextResponse.json({ error: "Acesso negado" }, { status: 403 });
   }
 
   const filePath = path.join(process.cwd(), "uploads", "documents", document.filePath);

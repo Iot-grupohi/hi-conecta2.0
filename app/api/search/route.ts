@@ -1,12 +1,19 @@
 import { NextResponse } from "next/server";
+import type { Role } from "@prisma/client";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { hasPermission } from "@/lib/permissions";
 import { toDisplayCase } from "@/lib/utils";
 
 export async function GET(request: Request) {
   const session = await auth();
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const role = session.user.role as Role;
+  if (!hasPermission(role, "employees:read")) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
   const { searchParams } = new URL(request.url);
@@ -17,6 +24,7 @@ export async function GET(request: Request) {
 
   const needle = q.toLowerCase();
   const cpfNeedle = q.replace(/\D/g, "");
+  const includeCpf = hasPermission(role, "employees:update");
 
   const employees = await prisma.employee.findMany({
     include: { position: true, department: true },
@@ -47,7 +55,7 @@ export async function GET(request: Request) {
     .map((employee) => ({
       id: employee.id,
       name: toDisplayCase(employee.name),
-      cpf: employee.cpf,
+      cpf: includeCpf ? employee.cpf : null,
       status: employee.status,
       positionName: employee.position?.name ? toDisplayCase(employee.position.name) : null,
       departmentName: employee.department?.name ? toDisplayCase(employee.department.name) : null,

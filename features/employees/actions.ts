@@ -4,9 +4,10 @@ import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import type { EmployeeStatus } from "@prisma/client";
+import type { EmployeeStatus, Role } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
 import { requirePermission } from "@/lib/auth-guard";
+import { hasPermission } from "@/lib/permissions";
 import { parseOptionalDate } from "@/lib/mappers";
 import { safeEmployeesReturnTo, toDisplayCase, toDisplayCaseOrNull } from "@/lib/utils";
 
@@ -74,7 +75,8 @@ export async function createEmployeeAction(
   formData: FormData,
 ): Promise<EmployeeActionState> {
   try {
-    await requirePermission("employees:create");
+    const session = await requirePermission("employees:create");
+    const canSetSalary = hasPermission(session.user.role as Role, "salary:read");
     const data = formToPayload(formData);
 
     const count = await prisma.employee.count();
@@ -102,7 +104,7 @@ export async function createEmployeeAction(
         directorName: toDisplayCaseOrNull(directorName),
         workScale: toDisplayCaseOrNull(data.workScale),
         workSchedule: data.workSchedule,
-        salary: parseNumber(data.salary),
+        salary: canSetSalary ? parseNumber(data.salary) : null,
         transportBenefit: data.transportBenefit,
         status: data.status as EmployeeStatus,
         externalCode: data.externalCode,
@@ -132,7 +134,8 @@ export async function updateEmployeeAction(
   formData: FormData,
 ): Promise<EmployeeActionState> {
   try {
-    await requirePermission("employees:update");
+    const session = await requirePermission("employees:update");
+    const canSetSalary = hasPermission(session.user.role as Role, "salary:read");
     const id = String(formData.get("id") ?? "");
     if (!id) return { error: "Colaborador inválido." };
 
@@ -160,7 +163,7 @@ export async function updateEmployeeAction(
         directorName: toDisplayCaseOrNull(directorName),
         workScale: toDisplayCaseOrNull(data.workScale),
         workSchedule: data.workSchedule,
-        salary: parseNumber(data.salary),
+        ...(canSetSalary ? { salary: parseNumber(data.salary) } : {}),
         transportBenefit: data.transportBenefit,
         status: data.status as EmployeeStatus,
         externalCode: data.externalCode,

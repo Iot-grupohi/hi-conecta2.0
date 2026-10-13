@@ -47,8 +47,8 @@ export function formatSalary(
   value: number | null | undefined,
   canViewSalary = false,
 ): string {
-  if (value == null || Number.isNaN(value)) return "—";
   if (!canViewSalary) return "R$ ••••••";
+  if (value == null || Number.isNaN(value)) return "—";
   return formatCurrency(value);
 }
 

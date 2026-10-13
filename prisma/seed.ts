@@ -52,6 +52,11 @@ function parseDate(value: unknown): Date | null {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
+function optionalFk(id: unknown, ids: Set<string>): string | null {
+  if (typeof id !== "string" || !id) return null;
+  return ids.has(id) ? id : null;
+}
+
 async function main() {
   const seedPath = path.join(process.cwd(), "data", "seed.json");
   const seed = JSON.parse(readFileSync(seedPath, "utf8")) as SeedFile;
@@ -63,10 +68,10 @@ async function main() {
   await prisma.leave.deleteMany();
   await prisma.termination.deleteMany();
   await prisma.vacation.deleteMany();
+  await prisma.user.deleteMany();
   await prisma.employee.deleteMany();
   await prisma.position.deleteMany();
   await prisma.department.deleteMany();
-  await prisma.user.deleteMany();
 
   console.log("Seeding users...");
   const users = [
@@ -152,14 +157,17 @@ async function main() {
     });
   }
 
+  const employeeIds = new Set(seed.employees.map((employee) => employee.id));
+  const departmentIds = new Set(seed.departments.map((department) => department.id));
+
   console.log("Seeding vacations...");
   for (const vacation of seed.vacations) {
     await prisma.vacation.create({
       data: {
         id: String(vacation.id),
-        employeeId: (vacation.employeeId as string | null) ?? null,
+        employeeId: optionalFk(vacation.employeeId, employeeIds),
         employeeName: String(vacation.employeeName),
-        departmentId: (vacation.departmentId as string | null) ?? null,
+        departmentId: optionalFk(vacation.departmentId, departmentIds),
         departmentName: (vacation.departmentName as string | null) ?? null,
         acquisitionPeriod: (vacation.acquisitionPeriod as string | null) ?? null,
         deadlineDate: parseDate(vacation.deadlineDate),
@@ -180,7 +188,7 @@ async function main() {
     await prisma.termination.create({
       data: {
         id: String(item.id),
-        employeeId: (item.employeeId as string | null) ?? null,
+        employeeId: optionalFk(item.employeeId, employeeIds),
         employeeName: String(item.employeeName),
         terminationType: String(item.terminationType),
         terminationTypeLabel: (item.terminationTypeLabel as string | null) ?? null,
@@ -202,7 +210,7 @@ async function main() {
     await prisma.leave.create({
       data: {
         id: String(item.id),
-        employeeId: (item.employeeId as string | null) ?? null,
+        employeeId: optionalFk(item.employeeId, employeeIds),
         employeeName: String(item.employeeName),
         days: (item.days as number | null) ?? null,
         startDate: parseDate(item.startDate),
@@ -217,7 +225,7 @@ async function main() {
     await prisma.probationPeriod.create({
       data: {
         id: String(item.id),
-        employeeId: (item.employeeId as string | null) ?? null,
+        employeeId: optionalFk(item.employeeId, employeeIds),
         employeeName: String(item.employeeName),
         hireDate: parseDate(item.hireDate),
         firstPeriodEnd: parseDate(item.firstPeriodEnd),
@@ -231,7 +239,7 @@ async function main() {
     await prisma.asoExam.create({
       data: {
         id: String(item.id),
-        employeeId: (item.employeeId as string | null) ?? null,
+        employeeId: optionalFk(item.employeeId, employeeIds),
         employeeName: String(item.employeeName),
         departmentName: (item.departmentName as string | null) ?? null,
         admissionExamDate: (item.admissionExamDate as string | null) ?? null,
@@ -250,7 +258,7 @@ async function main() {
   for (const item of seed.healthInsurance) {
     await prisma.healthInsurance.create({
       data: {
-        employeeId: (item.employeeId as string | null) ?? null,
+        employeeId: optionalFk(item.employeeId, employeeIds),
         name: String(item.name),
         cpf: (item.cpf as string | null) ?? null,
         provider: String(item.provider),

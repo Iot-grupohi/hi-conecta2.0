@@ -11,18 +11,18 @@ export function CostStat({
 }) {
   return (
     <div
-      className={`rounded-[var(--radius-lg)] border px-5 py-4 ${
+      className={`min-w-0 rounded-[var(--radius-lg)] border px-4 py-3.5 sm:px-5 sm:py-4 ${
         emphasize
           ? "border-[rgba(0,217,49,0.35)] bg-[var(--color-green-soft)]/40"
           : "border-[var(--color-border)] bg-[var(--color-surface)]"
       }`}
     >
-      <p className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-muted-foreground)] uppercase">
+      <p className="text-xs font-medium text-[var(--color-muted-foreground)]">
         {label}
       </p>
       <p
-        className={`mt-2 text-2xl font-extrabold tabular-nums ${
-          emphasize ? "text-[var(--color-navy)]" : "text-[var(--color-heading)]"
+        className={`mt-1.5 break-words text-lg font-bold tabular-nums sm:mt-2 sm:text-2xl ${
+          emphasize ? "text-[var(--color-green-text)]" : "text-[var(--color-heading)]"
         }`}
       >
         {value}

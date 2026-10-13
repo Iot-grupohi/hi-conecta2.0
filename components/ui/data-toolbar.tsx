@@ -25,6 +25,7 @@ export function DataToolbar({
   onSortChange,
   resultCount,
   totalCount,
+  summary,
 }: {
   query: string;
   onQueryChange: (value: string) => void;
@@ -41,11 +42,12 @@ export function DataToolbar({
   onSortChange?: (value: string) => void;
   resultCount: number;
   totalCount: number;
+  summary?: React.ReactNode;
 }) {
   return (
-    <Card className="mb-4 p-4 hover:translate-y-0 hover:border-[var(--color-border)] hover:shadow-[var(--shadow-sm)]">
-      <div className="grid gap-3 lg:grid-cols-[minmax(0,2fr)_repeat(auto-fit,minmax(160px,1fr))]">
-        <div className="relative min-w-0 lg:col-auto">
+    <Card className="mb-4 p-3 sm:p-4">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 [&>*:last-child:nth-child(even)]:col-span-2 lg:[&>*:last-child:nth-child(even)]:col-span-1 lg:grid-cols-[minmax(0,2fr)_repeat(auto-fit,minmax(160px,1fr))]">
+        <div className="relative col-span-2 min-w-0 lg:col-span-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--color-muted-foreground)]" />
           <Input
             className="pl-9"
@@ -84,7 +86,11 @@ export function DataToolbar({
         ) : null}
       </div>
       <p className="mt-3 text-xs text-[var(--color-muted-foreground)]">
-        Exibindo {resultCount} de {totalCount} registros
+        {summary ?? (
+          <>
+            Exibindo {resultCount} de {totalCount} registros
+          </>
+        )}
       </p>
     </Card>
   );
